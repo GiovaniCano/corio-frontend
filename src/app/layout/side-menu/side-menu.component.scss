@@ -1,0 +1,15 @@
+:host {
+  display: block;
+  background: rgba(255, 255, 255, 0); /* Old browsers */
+  background: -moz-linear-gradient(90deg, rgba(255, 255, 255, 0.27) 28%, rgba(255, 255, 255, 0)); /* FF3.6-15 */
+  background: -webkit-linear-gradient(90deg, rgba(255, 255, 255, 0.27) 28%, rgba(255, 255, 255, 0)); /* Chrome10-25,Safari5.1-6 */
+  background: linear-gradient(90deg, rgba(255, 255, 255, 0.27) 28%, rgba(255, 255, 255, 0)); /* W3C, IE10+, FF16+, Chrome26+, Opera12+, Safari7+ */
+  // background-color: red;
+}
+
+nav {
+  // background-color: rgb(82, 189, 153);
+  width: 175px;
+  height: 100%;
+  margin-right: 12vw;
+}

@@ -1,0 +1,23 @@
+@import 'src/styles/bootstrap';
+:host {
+    display: flex;
+    flex-direction: column;
+    @include media-breakpoint-up(sm) {
+        flex-direction: row;
+    }
+    min-height: 100vh;
+}
+
+#router-outlet {
+    flex: 1;
+    @include media-breakpoint-up(sm) {
+        margin-left: -12vw; // side-menu.component.scss -> nav { margin-right }
+    }
+}
+
+#app-side-menu {
+    display: none;
+    @include media-breakpoint-up(sm) {
+        display: block;
+    }
+}

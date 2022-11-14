@@ -5,6 +5,7 @@
 export const environment = {
   production: false,
   API_URL: '//127.0.0.1:8000/api/',
+  APP_NAME: 'Corio'
 };
 
 /*

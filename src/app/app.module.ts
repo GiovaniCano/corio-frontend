@@ -5,10 +5,16 @@ import { WithCredentialsInterceptor } from './interceptors/with-credentials.inte
 
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
+import { LoginComponent } from './auth/login/login.component';
+import { SideMenuComponent } from './layout/side-menu/side-menu.component';
+import { HeaderGuestComponent } from './layout/header-guest.component';
 
 @NgModule({
   declarations: [
-    AppComponent
+    AppComponent,
+    LoginComponent,
+    SideMenuComponent,
+    HeaderGuestComponent
   ],
   imports: [
     BrowserModule,
