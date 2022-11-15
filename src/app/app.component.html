@@ -1,5 +1,5 @@
 <app-side-menu id="app-side-menu" *ngIf="$isLogued|async"></app-side-menu>
 
-<div id="router-outlet">
+<div id="router-outlet" [ngClass]="{'adjust-margin-to-side-menu':$isLogued|async}">
     <router-outlet></router-outlet>
 </div>

@@ -9,9 +9,13 @@
 }
 
 #router-outlet {
+    // background-color: red;
     flex: 1;
-    @include media-breakpoint-up(sm) {
-        margin-left: -12vw; // side-menu.component.scss -> nav { margin-right }
+
+    &.adjust-margin-to-side-menu {
+        @include media-breakpoint-up(sm) {
+            margin-left: calc(-12vw + 24px); // side-menu.component.scss -> nav { margin-right }
+        }
     }
 }
 
