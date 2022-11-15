@@ -1,4 +1,5 @@
-@import 'src/styles/bootstrap';
+@import 'bs_for_components';
+
 :host {
     display: flex;
     flex-direction: column;
@@ -11,17 +12,19 @@
 #router-outlet {
     // background-color: red;
     flex: 1;
+    display: flex;
+    flex-direction: column;
 
     &.adjust-margin-to-side-menu {
         @include media-breakpoint-up(sm) {
-            margin-left: calc(-12vw + 24px); // side-menu.component.scss -> nav { margin-right }
+            margin-left: calc(24px + 175px); // side-menu.component.scss -> nav { width }
         }
     }
+
+    z-index: 1;
 }
 
 #app-side-menu {
-    display: none;
-    @include media-breakpoint-up(sm) {
-        display: block;
-    }
+    z-index: 0;
+    /* more styles in side-menu.component.scss */
 }
