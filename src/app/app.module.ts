@@ -18,7 +18,7 @@ import { DaysIndexComponent } from './c/user/days-index/days-index.component';
     SideMenuComponent,
     HeaderGuestComponent,
     NotFoundComponent,
-    DaysIndexComponent
+    DaysIndexComponent,
   ],
   imports: [
     BrowserModule,

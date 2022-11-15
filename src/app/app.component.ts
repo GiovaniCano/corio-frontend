@@ -8,5 +8,5 @@ import { Observable, of } from 'rxjs';
   changeDetection: ChangeDetectionStrategy.OnPush
 })
 export class AppComponent {
-  $isLogued:Observable<boolean> = of(true)
+  $isLogued:Observable<boolean> = of(false)
 }
