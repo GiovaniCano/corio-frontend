@@ -20,7 +20,7 @@ nav {
     display: flex;
     flex-direction: column;
     justify-content: space-between;
-    padding: 2vh 1rem;
+    padding: 2vh 0 2vh 1rem;
 
     align-items: center;
     margin: 0 auto;
@@ -43,7 +43,9 @@ nav {
         display: flex;
         align-items: center;
         svg {
+            min-width: 20px;
             width: 20px;
+            min-height: 20px;
             height: 20px;
         }
         span {
