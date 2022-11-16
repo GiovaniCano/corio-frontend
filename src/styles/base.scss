@@ -1,10 +1,6 @@
 body {
     --texture: url(/assets/texture-mobile.png);
     --gradient-deg: 110deg;
-    --gradient-orange: #f2d3bf;
-    --gradient-redpink: hsl(350, 80%, 80%);
-    // --gradient-orange: orange; // debug
-    // --gradient-redpink: red; // debug
 
     @include media-breakpoint-up(sm) {
         --texture: url(/assets/texture.png);
@@ -12,11 +8,11 @@ body {
     }
 
     /* Permalink - use to edit and share this gradient: https://colorzilla.com/gradient-editor/#f2d3bf+0,f6c2cb+100 */
-    background: var(--gradient-orange); /* Old browsers */
-    background: var(--texture) repeat, var(--gradient-orange); /* Old browsers */
-    background: var(--texture) repeat, -moz-linear-gradient(var(--gradient-deg),  var(--gradient-orange) 0%, var(--gradient-redpink) 100%) fixed; /* FF3.6-15 */
-    background: var(--texture) repeat, -webkit-linear-gradient(var(--gradient-deg),  var(--gradient-orange) 0%,var(--gradient-redpink) 100%) fixed; /* Chrome10-25,Safari5.1-6 */
-    background: var(--texture) repeat, linear-gradient(var(--gradient-deg),  var(--gradient-orange) 0%,var(--gradient-redpink) 100%) fixed; /* W3C, IE10+, FF16+, Chrome26+, Opera12+, Safari7+ */
+    background: $orange; /* Old browsers */
+    background: var(--texture) repeat, $orange; /* Old browsers */
+    background: var(--texture) repeat, -moz-linear-gradient(var(--gradient-deg),  $orange 0%, $redpink 100%) fixed; /* FF3.6-15 */
+    background: var(--texture) repeat, -webkit-linear-gradient(var(--gradient-deg),  $orange 0%,$redpink 100%) fixed; /* Chrome10-25,Safari5.1-6 */
+    background: var(--texture) repeat, linear-gradient(var(--gradient-deg),  $orange 0%,$redpink 100%) fixed; /* W3C, IE10+, FF16+, Chrome26+, Opera12+, Safari7+ */
 
     color: $dark;
     font-family: 'Edu SA Beginner', cursive;

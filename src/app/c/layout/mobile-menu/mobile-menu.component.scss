@@ -1,0 +1,32 @@
+@import 'bs-for-components';
+@import 'variables';
+
+:host {
+    background: $mobilemenu-redpink; /* Old browsers */
+    background: -moz-linear-gradient(0, $mobilemenu-orange, $mobilemenu-redpink); /* FF3.6-15 */
+    background: -webkit-linear-gradient(0, $mobilemenu-orange, $mobilemenu-redpink); /* Chrome10-25,Safari5.1-6 */
+    background: linear-gradient(0, $mobilemenu-orange, $mobilemenu-redpink); /* W3C, IE10+, FF16+, Chrome26+, Opera12+, Safari7+ */
+    backdrop-filter: blur(2px);
+
+    @include media-breakpoint-up(sm) {
+        display: none;
+    }
+    position: fixed;
+    top: 0;
+    bottom: 0;
+    left: 0;
+    right: 0;
+    z-index: 99;
+    padding: 2vh 0;
+}
+
+button {
+    position: absolute;
+    top: 0;
+    left: 0;
+    margin: 1rem;
+    background-color: transparent;
+    border: 0;
+    color: $light;
+    padding: 0;
+}

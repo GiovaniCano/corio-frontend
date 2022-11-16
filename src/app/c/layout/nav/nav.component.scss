@@ -1,0 +1,112 @@
+@import 'bs-for-components';
+@import 'variables';
+
+nav {
+    @media (max-height: 400px) {
+        overflow-y: auto;
+    }
+
+    --color: var(--bs-light);
+    @include media-breakpoint-up(sm) {
+        --color: var(--bs-dark);
+    }
+
+    width: 60%;
+    @include media-breakpoint-up(sm) {
+        width: 190px; // app.component.scss -> #router-outlet { mergin-left }        
+    }
+    height: 100%;
+    max-height: 800px;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    padding: 2vh 1rem;
+
+    align-items: center;
+    margin: 0 auto;
+    @include media-breakpoint-up(sm) {
+        align-items: flex-start;
+        margin: 0;
+    }
+
+    h1, button {
+        text-align: center;
+        @include media-breakpoint-up(sm) {
+            text-align: start;
+        }
+    }
+    a, button {
+        color: var(--color);
+        text-decoration: none;
+        height: 40px;
+        width: 100%;
+        display: flex;
+        align-items: center;
+        svg {
+            width: 20px;
+            height: 20px;
+        }
+        span {
+            margin-left: 10px;
+            margin-bottom: 0;
+        }
+    }
+    li a {
+        color: var(--bs-dark);
+    }
+    button {
+        width: 100%;
+        span {
+            white-space: nowrap;
+            overflow: hidden;
+            text-overflow: ellipsis;
+        }
+    }
+
+    .pages {
+        display: flex;
+        flex-direction: column;
+        margin-top: 2vh;
+        margin-bottom: auto;
+
+        align-items: center;
+        @include media-breakpoint-up(sm) {
+            align-items: flex-start;
+            width: 100%;
+        }
+
+        a:not(:last-of-type) {
+            margin-bottom: 3.5vh;
+        }
+        @include media-breakpoint-up(sm) {
+            a:hover {
+                margin-left: -1rem;
+                padding-left: 1rem;
+    
+                background: $redpink; /* Old browsers */
+                background: -moz-linear-gradient(90deg, $redpink -20%, transparent); /* FF3.6-15 */
+                background: -webkit-linear-gradient(90deg, $redpink -20%, transparent); /* Chrome10-25,Safari5.1-6 */
+                background: linear-gradient(90deg, $redpink -20%, transparent); /* W3C, IE10+, FF16+, Chrome26+, Opera12+, Safari7+ */        
+            }
+        }
+    }
+
+    .nav-separator {
+        height: 2px;
+        background-color: var(--color);
+        opacity: .2;
+        margin: 0 auto;
+        width: 62%;
+        @include media-breakpoint-up(sm) {
+            margin: (3.5vh) 0;
+            width: 100%;
+        }
+    }
+}
+
+.dropdown-menu {
+    --bs-dropdown-bg: var(--bs-light);
+    --bs-dropdown-color: var(--bs-dark);
+    --bs-dropdown-border-color: transparent;
+    box-shadow: $shadow-sm;
+}

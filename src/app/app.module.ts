@@ -10,6 +10,8 @@ import { SideMenuComponent } from './c/layout/side-menu/side-menu.component';
 import { HeaderGuestComponent } from './c/layout/header-guest.component';
 import { NotFoundComponent } from './c/layout/not-found.component';
 import { DaysIndexComponent } from './c/user/days-index/days-index.component';
+import { NavComponent } from './c/layout/nav/nav.component';
+import { MobileMenuComponent } from './c/layout/mobile-menu/mobile-menu.component';
 
 @NgModule({
   declarations: [
@@ -19,6 +21,8 @@ import { DaysIndexComponent } from './c/user/days-index/days-index.component';
     HeaderGuestComponent,
     NotFoundComponent,
     DaysIndexComponent,
+    NavComponent,
+    MobileMenuComponent,
   ],
   imports: [
     BrowserModule,
