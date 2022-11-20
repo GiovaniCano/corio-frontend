@@ -8,13 +8,15 @@ import { NotFoundComponent } from './c/layout/not-found.component';
 import { DaysIndexComponent } from './c/user/days-index/days-index.component';
 import { AuthGuard } from './guards/auth.guard';
 import { GuestGuard } from './guards/guest.guard';
+import { RegisterComponent } from './c/auth/register/register.component';
 
 const routes: Routes = [
-  { title: mT('Home'), path: '', component: DaysIndexComponent, pathMatch: "full", canActivate: [AuthGuard] },
+  { title: mT('Inicio'), path: '', component: DaysIndexComponent, pathMatch: "full", canActivate: [AuthGuard] },
 
-  { title: mT('Login'), path: 'login', component: LoginComponent, canActivate: [GuestGuard] },
+  { title: mT('Iniciar sesión'), path: 'login', component: LoginComponent, canActivate: [GuestGuard] },
+  { title: mT('Crear cuenta'), path: 'register', component: RegisterComponent, canActivate: [GuestGuard] },
 
-  { title: mT('Page not found'), path: '404', component: NotFoundComponent },
+  { title: mT('Página no encontrada'), path: '404', component: NotFoundComponent },
   { path: '**', redirectTo: '404' },
 ];
 

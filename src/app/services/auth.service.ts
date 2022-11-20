@@ -3,7 +3,7 @@ import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import { environment } from 'src/environments/environment';
 import { BehaviorSubject, concat, Observable, Subject, tap } from 'rxjs';
-import { LoginCredentials } from '../models/interfaces';
+import { LoginCredentials, RegisterCredentials } from '../models/interfaces';
 import { Router } from '@angular/router';
 import { User } from '../models/User';
 
@@ -22,6 +22,12 @@ export class AuthService {
   isFirstLoad() { return this._isFirstLoad }
 
   constructor(private _http: HttpClient, private _router: Router) { }
+
+  register(credentials: RegisterCredentials): Observable<null> {
+    const url = this.url('register')
+    return this._http.post<null>(url, credentials)
+      .pipe(tap(() => this._router.navigate(['/login'], { queryParams: { registered: 1 } })))
+  }
 
   authStatus(): Observable<User|null> {
     const url = this.url('auth-status')
@@ -52,7 +58,7 @@ export class AuthService {
       }})
     )
   }
-  expireSession() {
+  expireSession(): void {
     this._user.next(null)
     this._auth.next(false)
     this._router.navigate(['/login'], { queryParams: { expired: 1 } })

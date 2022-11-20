@@ -1,31 +1,33 @@
 import { ChangeDetectionStrategy, ChangeDetectorRef, Component, OnDestroy } from '@angular/core';
 import { FormControl, FormGroup, Validators } from '@angular/forms';
 import { Subscription, tap } from 'rxjs';
-import { LoginCredentials } from 'src/app/models/interfaces';
+import { RegisterCredentials } from 'src/app/models/interfaces';
 import { AuthService } from 'src/app/services/auth.service';
 
 @Component({
-  selector: 'app-login',
-  templateUrl: './login.component.html',
-  styleUrls: ['./login.component.scss'],
+  selector: 'app-register',
+  templateUrl: './register.component.html',
+  styleUrls: ['./register.component.scss'],
   changeDetection: ChangeDetectionStrategy.OnPush
 })
-export class LoginComponent implements OnDestroy {
+export class RegisterComponent implements OnDestroy {
   form = new FormGroup({
+    username: new FormControl('', [Validators.required]),
     email: new FormControl('', [Validators.required, Validators.email]),
-    password: new FormControl('', [Validators.required ]),
-    remember: new FormControl(false)
+    password: new FormControl('', [Validators.required]),
+    password_confirmation: new FormControl('', [Validators.required]),
   })
 
+  get username() { return this.form.controls.username }
   get email() { return this.form.controls.email }
   get password() { return this.form.controls.password }
-  get remember() { return this.form.controls.remember }
+  get password_confirmation() { return this.form.controls.password_confirmation }
 
-  authError?:string
+  passwordConfirmationError?:string
 
   showSpinner: boolean = false
 
-  private loginSubs?: Subscription
+  private registerSubs?: Subscription
 
   constructor(private _authS: AuthService, private _cd: ChangeDetectorRef) { }
 
@@ -33,9 +35,9 @@ export class LoginComponent implements OnDestroy {
     this.form.markAsPending()
     this.showSpinner = true
 
-    const credentials = this.form.value as LoginCredentials
+    const credentials = this.form.value as RegisterCredentials
 
-    this.loginSubs = this._authS.login(credentials)
+    this.registerSubs = this._authS.register(credentials)
       .pipe(tap({ finalize: () => {
         this.showSpinner = false
         this._cd.detectChanges()
@@ -45,12 +47,16 @@ export class LoginComponent implements OnDestroy {
         if(!responseErrors) return
 
         for(let error in responseErrors) {
-          if(error === 'auth') {
-            this.form.setErrors({auth: true})
-            this.authError = responseErrors[error][0]
+          const passwordConfirmationMessages = [
+            'The password confirmation does not match.',
+            'La confirmación de contraseña no coincide.',
+          ]
+          if(passwordConfirmationMessages.includes(responseErrors[error][0])) {
+            this.form.setErrors({passwordConfirmationError: true})
+            this.passwordConfirmationError = responseErrors[error][0]
             continue
           }
-
+          
           const control = this.form.get(error)
           control?.setErrors({serverErrorMessage: responseErrors[error][0]})
           control?.markAsTouched()
@@ -59,6 +65,6 @@ export class LoginComponent implements OnDestroy {
   }
 
   ngOnDestroy(): void {
-    this.loginSubs?.unsubscribe()
+    this.registerSubs?.unsubscribe()
   }
 }

@@ -5,6 +5,8 @@ import { HeaderGuestComponent } from './header-guest.component';
 import { FooterGuestComponent } from './footer-guest.component';
 import { WidgetsModule } from '../widgets/widgets.module';
 import { ReactiveFormsModule } from '@angular/forms';
+import { RegisterComponent } from './register/register.component';
+import { RouterModule } from '@angular/router';
 
 
 
@@ -13,11 +15,13 @@ import { ReactiveFormsModule } from '@angular/forms';
     HeaderGuestComponent,
     FooterGuestComponent,
     LoginComponent,
+    RegisterComponent,
   ],
   imports: [
     CommonModule,
     WidgetsModule,
-    ReactiveFormsModule
+    ReactiveFormsModule,
+    RouterModule
   ]
 })
 export class AuthModule { }
