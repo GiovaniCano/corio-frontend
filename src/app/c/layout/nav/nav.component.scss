@@ -56,6 +56,12 @@ nav {
     li a, li button {
         color: var(--bs-dark);
     }
+    .dropup button {
+        justify-content: center;
+        @include media-breakpoint-up(sm) {
+            justify-content: start;
+        }
+    }
     button {
         width: 100%;
         span {
@@ -97,7 +103,7 @@ nav {
         height: 2px;
         background-color: var(--color);
         opacity: .2;
-        margin: 0 auto;
+        margin: (3.5vh) auto;
         width: 62%;
         @include media-breakpoint-up(sm) {
             margin: (3.5vh) 0;
