@@ -1,0 +1,9 @@
+@import 'variables';
+
+.btn-form {
+    @extend .btn;
+    box-shadow: inset 6px 6px 12px white, $shadow-sm;
+    border: none;
+    display: block;
+    margin-left: auto;
+}

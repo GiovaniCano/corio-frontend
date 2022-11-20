@@ -1,0 +1,17 @@
+<div class="mb-4">
+    <label for="{{formControlName}}" class="form-label">{{label}}</label>
+
+    <input id="{{formControlName}}" #formInput
+        (input)="input($event)" 
+        (blur)="blur($event)" 
+        [type]="type" 
+        [value]="value" 
+        [placeholder]="placeholder" 
+        class="form-control" 
+        [class.is-invalid]="isInvalid"
+    >
+
+    <div *ngIf="isInvalid" class="invalid-feedback arial">{{ errorMessage }}</div>
+    <!-- <pre>{{control.errors | json}}</pre> -->
+    <!-- <code>{{isInvalid}}</code> -->
+</div>

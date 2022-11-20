@@ -22,7 +22,18 @@ h1 {
     font-weight: 700;
 }
 
-body, button {
-    // letter-spacing: 20px;
-    letter-spacing: 1px;
+input:not([type="submit"]) {
+    font-family: Arial, Helvetica, sans-serif;
+    
+    $placeholder-color: rgb(165, 165, 165);
+    &::placeholder { /* Chrome, Firefox, Opera, Safari 10.1+ */
+        color: $placeholder-color;
+        opacity: 1; /* Firefox */
+    }      
+    &:-ms-input-placeholder { /* Internet Explorer 10-11 */
+        color: $placeholder-color;
+    }    
+    &::-ms-input-placeholder { /* Microsoft Edge */
+        color: $placeholder-color;
+    }
 }

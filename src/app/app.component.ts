@@ -1,5 +1,6 @@
-import { Component, ChangeDetectionStrategy } from '@angular/core';
-import { Observable, of } from 'rxjs';
+import { Component, ChangeDetectionStrategy, OnInit } from '@angular/core';
+import { Observable, share } from 'rxjs';
+import { AuthService } from './services/auth.service';
 
 @Component({
   selector: 'app-root',
@@ -8,5 +9,9 @@ import { Observable, of } from 'rxjs';
   changeDetection: ChangeDetectionStrategy.OnPush
 })
 export class AppComponent {
-  $isLogued:Observable<boolean> = of(true)
+  auth$: Observable<boolean> = this._authS.auth$.pipe(share())
+
+  constructor(private _authS: AuthService) {
+    this._authS.authStatus().subscribe()
+  }
 }

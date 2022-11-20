@@ -5,9 +5,9 @@ import { environment } from 'src/environments/environment';
   selector: 'app-header-guest',
   template: `
     <header class="py-3">
-      <h1 class="text-center m-0">
+      <span class="h1 text-center m-0 d-block">
         {{title}}
-      </h1>
+      </span>
     </header>
   `,
   styles: [

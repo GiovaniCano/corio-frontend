@@ -1,4 +1,6 @@
+import { HttpClient } from '@angular/common/http';
 import { ChangeDetectionStrategy, Component, OnInit } from '@angular/core';
+import { environment } from 'src/environments/environment';
 
 @Component({
   selector: 'app-days-index',
@@ -7,8 +9,9 @@ import { ChangeDetectionStrategy, Component, OnInit } from '@angular/core';
   changeDetection: ChangeDetectionStrategy.OnPush
 })
 export class DaysIndexComponent implements OnInit {
+  test$ = this._http.get(environment.API_URL+'auth-status')
 
-  constructor() { }
+  constructor(private _http: HttpClient) { }
 
   ngOnInit(): void {
   }

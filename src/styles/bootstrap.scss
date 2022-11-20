@@ -29,7 +29,7 @@
 @import "bootstrap/scss/buttons";
 // @import "bootstrap/scss/transitions";
 @import "bootstrap/scss/dropdown";
-// @import "bootstrap/scss/button-group";
+@import "bootstrap/scss/button-group";
 // @import "bootstrap/scss/nav";
 // @import "bootstrap/scss/navbar";
 // @import "bootstrap/scss/card";
@@ -46,7 +46,7 @@
 // @import "bootstrap/scss/tooltip";
 // @import "bootstrap/scss/popover";
 // @import "bootstrap/scss/carousel";
-// @import "bootstrap/scss/spinners";
+@import "bootstrap/scss/spinners";
 // @import "bootstrap/scss/offcanvas";
 // @import "bootstrap/scss/placeholders";
 
@@ -55,3 +55,38 @@
 
 
 // 8. Add additional custom code here
+
+.btn {
+    border-radius: 50rem;
+    color: $dark;
+    box-shadow: $shadow-sm;
+    min-height: 40px;
+    &:hover, &:focus {
+        background-color: $white;
+        color: $black;
+    }
+    &:focus {
+        box-shadow: $shadow-sm, 0 0 0 0.25rem transparentize($orange, .75);
+    }
+}
+
+.btn-group {
+    border-radius: 50rem;
+    width: 100%;
+    box-shadow: $shadow-lg;
+
+    a.btn {
+        display: flex;
+        align-items: center;
+        justify-content: center;
+    }
+    .btn {
+        box-shadow: none;
+        flex: 1 1 0;
+    }
+
+    .btn-group-separator {
+        width: 2px;
+        background-color: $dark;
+    }
+}
