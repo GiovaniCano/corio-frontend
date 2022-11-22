@@ -3,6 +3,7 @@ import { FormControl, FormGroup, Validators } from '@angular/forms';
 import { Subscription, tap } from 'rxjs';
 import { RegisterCredentials } from 'src/app/models/interfaces';
 import { AuthService } from 'src/app/services/auth.service';
+import { alphaNumExtras, password } from '../../widgets/validators';
 
 @Component({
   selector: 'app-register',
@@ -12,9 +13,9 @@ import { AuthService } from 'src/app/services/auth.service';
 })
 export class RegisterComponent implements OnDestroy {
   form = new FormGroup({
-    username: new FormControl('', [Validators.required]),
-    email: new FormControl('', [Validators.required, Validators.email]),
-    password: new FormControl('', [Validators.required]),
+    username: new FormControl('', [Validators.required, Validators.maxLength(25), Validators.minLength(2), alphaNumExtras]),
+    email: new FormControl('', [Validators.required, Validators.email, Validators.maxLength(255)]),
+    password: new FormControl('', [Validators.required, Validators.maxLength(255), Validators.minLength(8), password]),
     password_confirmation: new FormControl('', [Validators.required]),
   })
 

@@ -3,10 +3,15 @@ export interface LoginCredentials {
     password: string
     remember: boolean
 }
-
 export interface RegisterCredentials {
     email: string
     username: string
+    password: string
+    password_confirmation: string
+}
+export interface ResetPasswordCredentials {
+    email: string
+    token: string
     password: string
     password_confirmation: string
 }

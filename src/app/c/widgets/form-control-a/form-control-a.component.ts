@@ -32,6 +32,16 @@ export class FormControlAComponent implements ControlValueAccessor, AfterViewIni
     if(this.currentError === 'serverErrorMessage') {
       return this.control.errors!['serverErrorMessage']
     }
+
+    if(this.currentError === 'minlength' || this.currentError === 'maxlength') {
+      const requiredLength:number = this.control.errors![this.currentError]['requiredLength']
+      const actualLength:number = this.control.errors![this.currentError]['actualLength']
+      
+      return formErrors[this.currentError]
+              .replace('{n}', requiredLength.toString())
+              .replace('{n2}', actualLength.toString())
+    }
+
     return formErrors[this.currentError as keyof typeof formErrors] 
   }
 

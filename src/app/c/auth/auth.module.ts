@@ -7,6 +7,8 @@ import { WidgetsModule } from '../widgets/widgets.module';
 import { ReactiveFormsModule } from '@angular/forms';
 import { RegisterComponent } from './register/register.component';
 import { RouterModule } from '@angular/router';
+import { ForgotPasswordComponent } from './forgot-password/forgot-password.component';
+import { ResetPasswordComponent } from './reset-password/reset-password.component';
 
 
 
@@ -16,6 +18,8 @@ import { RouterModule } from '@angular/router';
     FooterGuestComponent,
     LoginComponent,
     RegisterComponent,
+    ForgotPasswordComponent,
+    ResetPasswordComponent,
   ],
   imports: [
     CommonModule,

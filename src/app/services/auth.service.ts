@@ -3,7 +3,7 @@ import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import { environment } from 'src/environments/environment';
 import { BehaviorSubject, concat, Observable, Subject, tap } from 'rxjs';
-import { LoginCredentials, RegisterCredentials } from '../models/interfaces';
+import { LoginCredentials, RegisterCredentials, ResetPasswordCredentials } from '../models/interfaces';
 import { Router } from '@angular/router';
 import { User } from '../models/User';
 
@@ -22,6 +22,16 @@ export class AuthService {
   isFirstLoad() { return this._isFirstLoad }
 
   constructor(private _http: HttpClient, private _router: Router) { }
+
+  resetPassword(body: ResetPasswordCredentials): Observable<any> {
+    const url = this.url('reset-password')
+    return this._http.post(url, body).pipe(tap(() => this._router.navigate(['/login'])))
+  }
+
+  sendResetPasswordLink(email:string): Observable<any> {
+    const url = this.url('forgot-password')
+    return this._http.post(url, { email: email })
+  }
 
   register(credentials: RegisterCredentials): Observable<null> {
     const url = this.url('register')

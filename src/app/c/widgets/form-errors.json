@@ -1,4 +1,8 @@
 {
     "email": "No es un correo válido.",
-    "required": "Este campo es obligatorio."
+    "required": "Este campo es obligatorio.",
+    "maxlength": "Máximo {n} caracteres permitidos, actual: {n2}.",
+    "minlength": "Se requieren más de {n} caracteres, actual: {n2}",
+    "alphaNumExtras": "Este campo contiene caracteres no permitidos.",
+    "password": "La contraseña debe contener por lo menos una letra mayúscula, un número y un carácter especial."
 }
