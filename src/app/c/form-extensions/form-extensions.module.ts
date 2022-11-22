@@ -14,7 +14,8 @@ import { ReactiveFormsModule } from '@angular/forms';
     ReactiveFormsModule,
   ],
   exports: [
+    ReactiveFormsModule,
     FormControlAComponent
   ]
 })
-export class WidgetsModule { }
+export class FormExtensionsModule { }

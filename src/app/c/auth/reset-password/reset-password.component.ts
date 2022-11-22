@@ -4,7 +4,7 @@ import { ActivatedRoute, ParamMap } from '@angular/router';
 import { Subscription, tap } from 'rxjs';
 import { ResetPasswordCredentials } from 'src/app/models/interfaces';
 import { AuthService } from 'src/app/services/auth.service';
-import { password } from '../../widgets/validators';
+import { password } from '../../form-extensions/validators';
 
 @Component({
   selector: 'app-reset-password',

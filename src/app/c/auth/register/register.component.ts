@@ -3,7 +3,7 @@ import { FormControl, FormGroup, Validators } from '@angular/forms';
 import { Subscription, tap } from 'rxjs';
 import { RegisterCredentials } from 'src/app/models/interfaces';
 import { AuthService } from 'src/app/services/auth.service';
-import { alphaNumExtras, password } from '../../widgets/validators';
+import { alphaNumExtras, password } from '../../form-extensions/validators';
 
 @Component({
   selector: 'app-register',

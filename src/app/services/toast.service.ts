@@ -19,7 +19,6 @@ export class ToastService {
   deleteToast(index: number): void {
     const currentToasts = this._toasts.getValue()
     const toasts = currentToasts.filter((toast, i) => index !== i)
-    console.log(toasts)
     this._toasts.next(toasts)
   }
 }
