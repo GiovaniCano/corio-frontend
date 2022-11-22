@@ -2,6 +2,7 @@ import { NgModule } from '@angular/core';
 import { BrowserModule } from '@angular/platform-browser';
 import { HttpClientModule, HTTP_INTERCEPTORS } from '@angular/common/http';
 import { WithCredentialsInterceptor } from './interceptors/with-credentials.interceptor';
+import { SessionExpiredInterceptor } from './interceptors/session-expired.interceptor';
 import { AppRoutingModule } from './app-routing.module';
 
 import { AuthModule } from './c/auth/auth.module';
@@ -13,6 +14,7 @@ import { MobileMenuComponent } from './c/layout/mobile-menu/mobile-menu.componen
 import { NavComponent } from './c/layout/nav/nav.component';
 import { DaysIndexComponent } from './c/user/days-index/days-index.component';
 import { ToastsComponent } from './c/layout/toasts/toasts.component';
+import { EditProfileComponent } from './c/user/edit-profile/edit-profile.component';
 
 @NgModule({
   declarations: [
@@ -23,6 +25,7 @@ import { ToastsComponent } from './c/layout/toasts/toasts.component';
     NavComponent,
     MobileMenuComponent,
     ToastsComponent,
+    EditProfileComponent,
   ],
   imports: [
     BrowserModule,
@@ -34,6 +37,7 @@ import { ToastsComponent } from './c/layout/toasts/toasts.component';
   ],
   providers: [
     { provide: HTTP_INTERCEPTORS, useClass: WithCredentialsInterceptor, multi: true },
+    { provide: HTTP_INTERCEPTORS, useClass: SessionExpiredInterceptor, multi: true },
   ],
   bootstrap: [AppComponent]
 })

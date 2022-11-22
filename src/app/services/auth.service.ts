@@ -94,8 +94,8 @@ export class AuthService {
     this._auth.next(false)
     this._router.navigate(['/login'])
     this._toastS.createToast({
-      message: 'Tu sesión expiró, puedes inicar sesión de nuevo.',
-      type: 'info'
+      message: 'Tu sesión expiró, puedes volver a iniciar sesión.',
+      type: 'danger'
     })
   }
 
