@@ -13,4 +13,8 @@ export class EditProfileComponent implements OnInit {
   ngOnInit(): void {
   }
 
+  deleteAccount() {
+    // modal
+  }
+
 }

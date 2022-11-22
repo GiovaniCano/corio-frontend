@@ -15,6 +15,16 @@ export interface ResetPasswordCredentials {
     password: string
     password_confirmation: string
 }
+export interface UpdatePasswordCredentials {
+    current_password: string
+    password: string
+    password_confirmation: string
+}
+export interface UpdateProfileCredentials {
+    email: string
+    username: string
+    // avatar_id: number
+}
 
 export interface Toast {
     type: 'info'|'success'|'danger'

@@ -1,19 +1,21 @@
 <h2>header</h2>
 
 <div id="content" class="content-center mx-auto">
+    <!-- avatar -->
+
     <main class="bg-light p-3 box-shadow-lg rounded-4">
         <h1 class="text-center h2">Editar Perfil</h1>
         <app-edit-profile-form></app-edit-profile-form>
     </main>
 
-    <div class="bg-light p-3 box-shadow-lg rounded-4 mt-5">
+    <div class="bg-light p-3 box-shadow-lg rounded-4 mt-4">
         <h2 class="text-center">Cambiar Contraseña</h2>
         <app-edit-password-form></app-edit-password-form>
     </div>
 
     <!-- delete account -->
     <div class="bg-light p-3 box-shadow-lg rounded-4 mt-5">
-        <button type="button" class="btn btn-outline-danger border border-2 border-danger">Eliminar cuenta</button>
+        <button (click)="deleteAccount()" type="button" class="btn btn-outline-danger border border-2 border-danger">Eliminar cuenta</button>
     </div>
 </div>
 

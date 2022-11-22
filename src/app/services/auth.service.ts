@@ -3,7 +3,7 @@ import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import { environment } from 'src/environments/environment';
 import { BehaviorSubject, concat, Observable, Subject, tap } from 'rxjs';
-import { LoginCredentials, RegisterCredentials, ResetPasswordCredentials } from '../models/interfaces';
+import { LoginCredentials, RegisterCredentials, ResetPasswordCredentials, UpdatePasswordCredentials, UpdateProfileCredentials } from '../models/interfaces';
 import { Router } from '@angular/router';
 import { User } from '../models/User';
 import { ToastService } from './toast.service';
@@ -23,6 +23,23 @@ export class AuthService {
   isFirstLoad() { return this._isFirstLoad }
 
   constructor(private _toastS: ToastService, private _http: HttpClient, private _router: Router) { }
+
+  updateProfile(body: UpdateProfileCredentials): Observable<User> {
+    const url = this.url('user/profile-information')
+    return this._http.put<User>(url, body)
+    // update angular user
+    // interceptor
+  }
+
+  updatePassword(body: UpdatePasswordCredentials): Observable<any> {
+    const url = this.url('user/password')
+    return this._http.put(url, body)
+    // interceptor
+  }
+
+  deleteAccount() {
+    // const url = this.url('user/password')
+  }
 
   resetPassword(body: ResetPasswordCredentials): Observable<any> {
     const url = this.url('reset-password')

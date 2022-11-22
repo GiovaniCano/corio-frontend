@@ -1,9 +1,20 @@
-<p>edit-profile-form works!</p>
+<form [formGroup]="form" (submit)="submit()">
+    <app-form-control-a
+        formControlName="email"
+        [control]="email"
+        type="email" 
+        label="E-mail" 
+        placeholder="Tu correo electrónico"></app-form-control-a>
 
-<!-- <form [formGroup]="form" (submit)="submit()">
+    <app-form-control-a
+        formControlName="username"
+        [control]="username"
+        type="text" 
+        label="Nombre de usuario" 
+        placeholder="Elige un nombre de usuario"></app-form-control-a>
 
     <button type="submit" class="btn-form" [disabled]="(form.statusChanges | async) !== 'VALID'">
         <span class="spinner-border spinner-border-sm" *ngIf="showSpinner"></span>
-        Iniciar sesión
+        Actualizar perfil
     </button>
-</form> -->
+</form>
