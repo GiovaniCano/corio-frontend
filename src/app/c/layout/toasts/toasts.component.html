@@ -1,0 +1,21 @@
+<div class="toast-container position-fixed bottom-0 end-0 p-3">
+
+  <ng-container *ngFor="let toast of (toasts$|async); index as i">
+
+    <div #toast class="toast align-items-center border-0 text-bg-{{toast.type}}" role="alert" aria-live="assertive" aria-atomic="true">
+      <div class="d-flex">
+        <div class="toast-body h6 m-0">
+          <!-- {{ i + ' - ' }} -->
+          {{ toast.message }}
+        </div>
+        
+        <button (click)="deleteToast(i)" type="button" class="btn-close me-3 m-auto" data-bs-dismiss="toast" aria-label="Close"></button>
+      </div>
+    </div><
+
+  </ng-container>
+
+</div>
+
+<!-- debug -->
+<!-- <button (click)="createToast()">Create toast</button> -->

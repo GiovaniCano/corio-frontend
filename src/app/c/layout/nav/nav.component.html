@@ -1,11 +1,11 @@
 <nav>
     <div class="w-100">
-        <a href="/" class="d-block"><span class="h1 m-0 d-block">{{title}}</span></a>
+        <a routerLink="/"class="d-block"><span class="h1 m-0 d-block">{{title}}</span></a>
         <div class="nav-separator"></div>
     </div>
 
     <div class="pages">
-        <a href="/">
+        <a routerLink="/">
             <svg xmlns="http://www.w3.org/2000/svg" fill="currentColor" viewBox="0 0 16 16">
                 <path d="M8.707 1.5a1 1 0 0 0-1.414 0L.646 8.146a.5.5 0 0 0 .708.708L2 8.207V13.5A1.5 1.5 0 0 0 3.5 15h9a1.5 1.5 0 0 0 1.5-1.5V8.207l.646.647a.5.5 0 0 0 .708-.708L13 5.793V2.5a.5.5 0 0 0-.5-.5h-1a.5.5 0 0 0-.5.5v1.293L8.707 1.5ZM13 7.207V13.5a.5.5 0 0 1-.5.5h-9a.5.5 0 0 1-.5-.5V7.207l5-5 5 5Z"/>
             </svg>
@@ -41,6 +41,7 @@
                     <img [src]="'/assets/avatars/' + user.avatar.name " width="30" height="30" alt="Avatar">
                     <span class="h6 pb-1">{{ user.username }}</span>
                 </button>
+
                 <ul class="dropdown-menu">
                     <li><span class="dropdown-item text-center h6 text-dark" style="white-space: initial;">{{ user.username }}</span></li>
                     <li><hr class="dropdown-divider"></li>
@@ -61,6 +62,7 @@
                             <span class="h6">Modo oscuro</span>
                         </a>
                     </li> -->
+                    
                     <li><hr class="dropdown-divider"></li>
                     <li>
                         <button type="button" class="dropdown-item" (click)="logout()">

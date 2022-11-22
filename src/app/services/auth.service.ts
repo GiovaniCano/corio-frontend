@@ -6,6 +6,7 @@ import { BehaviorSubject, concat, Observable, Subject, tap } from 'rxjs';
 import { LoginCredentials, RegisterCredentials, ResetPasswordCredentials } from '../models/interfaces';
 import { Router } from '@angular/router';
 import { User } from '../models/User';
+import { ToastService } from './toast.service';
 
 @Injectable({
   providedIn: 'root'
@@ -21,22 +22,42 @@ export class AuthService {
   private _isFirstLoad:boolean = true
   isFirstLoad() { return this._isFirstLoad }
 
-  constructor(private _http: HttpClient, private _router: Router) { }
+  constructor(private _toastS: ToastService, private _http: HttpClient, private _router: Router) { }
 
   resetPassword(body: ResetPasswordCredentials): Observable<any> {
     const url = this.url('reset-password')
-    return this._http.post(url, body).pipe(tap(() => this._router.navigate(['/login'])))
+    return this._http.post(url, body).pipe(
+      tap(() => {
+        this._router.navigate(['/login'])
+        this._toastS.createToast({
+          message: 'Contraseña restablecida exitosamente.',
+          type: 'success'
+        })
+      })
+    )
   }
 
   sendResetPasswordLink(email:string): Observable<any> {
     const url = this.url('forgot-password')
-    return this._http.post(url, { email: email })
+    return this._http.post(url, { email: email }).pipe(
+      tap(() => this._toastS.createToast({
+        message: 'Email enviado, revisa tu correo electrónico y usa el enlace que enviamos para restablecer tu contraseña.',
+        type: 'success'
+      }))
+    )
   }
 
   register(credentials: RegisterCredentials): Observable<null> {
     const url = this.url('register')
-    return this._http.post<null>(url, credentials)
-      .pipe(tap(() => this._router.navigate(['/login'], { queryParams: { registered: 1 } })))
+    return this._http.post<null>(url, credentials).pipe(
+      tap(() => {
+        this._router.navigate(['/login'])
+        this._toastS.createToast({
+          message: '¡Cuenta creada, ahora puedes iniciar sesión!',
+          type: 'success'
+        })
+      })
+    )
   }
 
   authStatus(): Observable<User|null> {
@@ -71,7 +92,11 @@ export class AuthService {
   expireSession(): void {
     this._user.next(null)
     this._auth.next(false)
-    this._router.navigate(['/login'], { queryParams: { expired: 1 } })
+    this._router.navigate(['/login'])
+    this._toastS.createToast({
+      message: 'Tu sesión expiró, puedes inicar sesión de nuevo.',
+      type: 'info'
+    })
   }
 
   login(credentials: LoginCredentials): Observable<any> {

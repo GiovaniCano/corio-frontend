@@ -13,9 +13,9 @@ import { alphaNumExtras, password } from '../../widgets/validators';
 })
 export class RegisterComponent implements OnDestroy {
   form = new FormGroup({
-    username: new FormControl('', [Validators.required, Validators.maxLength(25), Validators.minLength(2), alphaNumExtras]),
+    username: new FormControl('', [Validators.required, Validators.minLength(2), Validators.maxLength(25), alphaNumExtras]),
     email: new FormControl('', [Validators.required, Validators.email, Validators.maxLength(255)]),
-    password: new FormControl('', [Validators.required, Validators.maxLength(255), Validators.minLength(8), password]),
+    password: new FormControl('', [Validators.required, password, Validators.minLength(8), Validators.maxLength(255)]),
     password_confirmation: new FormControl('', [Validators.required]),
   })
 

@@ -7,3 +7,10 @@ $dark: hsl(208, 7%, 34%);
 
 $primary: darken($orange, 15);
 $secondary: $redpink;
+
+$cyan:    #0dcaf0 !default;
+$green:   #198754 !default;
+$red:     #dc3545 !default;
+$info: tint-color($cyan, 60%);
+$success: tint-color($green, 60%);
+$danger: tint-color($red, 40%);

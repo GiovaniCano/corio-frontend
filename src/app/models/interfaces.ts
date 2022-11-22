@@ -15,3 +15,8 @@ export interface ResetPasswordCredentials {
     password: string
     password_confirmation: string
 }
+
+export interface Toast {
+    type: 'info'|'success'|'danger'
+    message: string
+}

@@ -12,6 +12,7 @@ import { SideMenuComponent } from './c/layout/side-menu/side-menu.component';
 import { MobileMenuComponent } from './c/layout/mobile-menu/mobile-menu.component';
 import { NavComponent } from './c/layout/nav/nav.component';
 import { DaysIndexComponent } from './c/user/days-index/days-index.component';
+import { ToastsComponent } from './c/layout/toasts/toasts.component';
 
 @NgModule({
   declarations: [
@@ -21,6 +22,7 @@ import { DaysIndexComponent } from './c/user/days-index/days-index.component';
     DaysIndexComponent,
     NavComponent,
     MobileMenuComponent,
+    ToastsComponent,
   ],
   imports: [
     BrowserModule,
