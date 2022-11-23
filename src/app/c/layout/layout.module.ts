@@ -7,6 +7,7 @@ import { SideMenuComponent } from './side-menu/side-menu.component';
 import { NavComponent } from './nav/nav.component';
 import { ToastsComponent } from './toasts/toasts.component';
 import { RouterModule } from '@angular/router';
+import { ModalBaseComponent } from './modal-base/modal-base.component';
 
 
 
@@ -17,7 +18,8 @@ import { RouterModule } from '@angular/router';
     NavComponent,
     MobileMenuComponent,
     SideMenuComponent,
-    ToastsComponent
+    ToastsComponent,
+    ModalBaseComponent
   ],
   imports: [
     CommonModule,
@@ -29,7 +31,8 @@ import { RouterModule } from '@angular/router';
     NavComponent,
     MobileMenuComponent,
     SideMenuComponent,
-    ToastsComponent
+    ToastsComponent,
+    ModalBaseComponent
   ]
 })
 export class LayoutModule { }

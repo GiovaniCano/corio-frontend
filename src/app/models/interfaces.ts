@@ -23,7 +23,11 @@ export interface UpdatePasswordCredentials {
 export interface UpdateProfileCredentials {
     email: string
     username: string
-    // avatar_id: number
+    avatar_id: number
+}
+export interface Avatar {
+    id: number
+    name: string
 }
 
 export interface Toast {

@@ -1,8 +1,6 @@
 <h2>header</h2>
 
 <div id="content" class="content-center mx-auto">
-    <!-- avatar -->
-
     <main class="bg-light p-3 box-shadow-lg rounded-4">
         <h1 class="text-center h2">Editar Perfil</h1>
         <app-edit-profile-form></app-edit-profile-form>
@@ -15,8 +13,38 @@
 
     <!-- delete account -->
     <div class="bg-light p-3 box-shadow-lg rounded-4 mt-5">
-        <button (click)="deleteAccount()" type="button" class="btn btn-outline-danger border border-2 border-danger">Eliminar cuenta</button>
+        <button (click)="show_confirmDeleteAccountModal = true" type="button"
+            class="btn btn-outline-danger border border-2 border-danger">Eliminar cuenta</button>
     </div>
 </div>
 
 <app-footer></app-footer>
+
+<!-- modal -->
+<app-modal-base *ngIf="show_confirmDeleteAccountModal" (close)="show_confirmDeleteAccountModal = false">
+    <div class="confirm-delete-account-modal bg-light rounded p-3">
+        <div>
+            <h5 class="text-center">¿Eliminar mi cuenta?</h5>
+            <p class="text-center">Esta acción no se puede revertir.</p>
+        </div>
+        <div>
+            <form [formGroup]="form" (submit)="deleteAccount()">
+                <app-form-control-a
+                    formControlName="password"
+                    [control]="password"
+                    type="password" 
+                    label="Contraseña" 
+                    placeholder="Confirma tu contraseña"></app-form-control-a>
+
+                <div class="d-flex">
+                    <button #closeModalBtn type="button" class="btn btn-info w-50">Cancelar</button>
+
+                    <button type="submit" class="btn btn-danger w-50 ms-3" [disabled]="(form.statusChanges | async) !== 'VALID'">
+                        <span class="spinner-border spinner-border-sm" *ngIf="showSpinner"></span>
+                        Eliminar mi cuenta
+                    </button>
+                </div>
+            </form>
+        </div>
+    </div>
+</app-modal-base>

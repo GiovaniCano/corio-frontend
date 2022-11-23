@@ -1,0 +1,7 @@
+<div (click)="close()">
+    <button type="button" class="btn-close btn-close-white d-block ms-auto" aria-label="Close"></button>
+</div>
+
+<div class="ng-content pt-0" (click)="close($event)">
+    <ng-content></ng-content>
+</div>

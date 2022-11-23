@@ -11,10 +11,37 @@
         [control]="username"
         type="text" 
         label="Nombre de usuario" 
-        placeholder="Elige un nombre de usuario"></app-form-control-a>
+        placeholder="Tu nombre de usuario"></app-form-control-a>
+
+    <div class="mb-4 d-flex flex-column align-items-start">
+        <label class="form-label">Imagen de usuario</label>
+        <button type="button" class="border-0 bg-transparent p-0 m-0" (click)="showAvatarsModal = true">
+            <img [src]="'/assets/avatars/' + selectedAvatar?.name" [alt]="selectedAvatar?.name" width="60" height="60">
+        </button>
+    </div>
+    <input formControlName="avatar_id" type="hidden">
 
     <button type="submit" class="btn-form" [disabled]="(form.statusChanges | async) !== 'VALID'">
         <span class="spinner-border spinner-border-sm" *ngIf="showSpinner"></span>
         Actualizar perfil
     </button>
 </form>
+
+<!-- modal -->
+<app-modal-base (close)="showAvatarsModal = false" *ngIf="showAvatarsModal">
+
+    <div class="avatars-container-bg rounded bg-light">
+        <div class="p-3 pb-0">
+            <h4 class="text-center m-0">Elige una imagen de usuario:</h4>
+        </div>
+        <div class="avatars-container p-4">
+            <ng-container *ngFor="let avatar of avatars">
+                <button #closeModalBtn class="bg-transparent border-0 p-0 m-0 avatarImage" (click)="setAvatarId(avatar)">
+                    <img [src]="'/assets/avatars/' + avatar.name" [alt]="avatar.name" width="60" height="60" 
+                        [class.selected-avatar]="avatar.id === selectedAvatar?.id">
+                </button>
+            </ng-container>
+        </div>
+    </div>
+
+</app-modal-base>
