@@ -3,4 +3,6 @@
 </app-header-actions>
 
 <p class="mt-5">days-index works!</p>
-<pre>{{ test$ | async | json }}</pre>
+<pre *ngIf="test$ | async as test">
+    {{ test | json }}
+</pre>

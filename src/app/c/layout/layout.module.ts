@@ -10,6 +10,7 @@ import { RouterModule } from '@angular/router';
 import { ModalBaseComponent } from './modal-base/modal-base.component';
 import { HeaderMobileComponent } from './header-mobile/header-mobile.component';
 import { HeaderActionsComponent } from './header-actions/header-actions.component';
+import { LoadingSpinnerComponent } from './loading-spinner/loading-spinner.component';
 
 
 
@@ -24,6 +25,7 @@ import { HeaderActionsComponent } from './header-actions/header-actions.componen
     ModalBaseComponent,
     HeaderMobileComponent,
     HeaderActionsComponent,
+    LoadingSpinnerComponent,
   ],
   imports: [
     CommonModule,
@@ -39,6 +41,7 @@ import { HeaderActionsComponent } from './header-actions/header-actions.componen
     ModalBaseComponent,
     HeaderMobileComponent,
     HeaderActionsComponent,
+    LoadingSpinnerComponent,
   ]
 })
 export class LayoutModule { }

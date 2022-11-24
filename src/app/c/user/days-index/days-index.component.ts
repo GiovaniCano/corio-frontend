@@ -1,5 +1,7 @@
 import { HttpClient } from '@angular/common/http';
-import { ChangeDetectionStrategy, Component, OnInit } from '@angular/core';
+import { ChangeDetectionStrategy, Component } from '@angular/core';
+import { tap } from 'rxjs';
+import { LoadingSpinnerService } from 'src/app/services/loading-spinner.service';
 import { environment } from 'src/environments/environment';
 
 @Component({
@@ -8,12 +10,13 @@ import { environment } from 'src/environments/environment';
   styleUrls: ['./days-index.component.scss'],
   changeDetection: ChangeDetectionStrategy.OnPush
 })
-export class DaysIndexComponent implements OnInit {
-  test$ = this._http.get(environment.API_URL+'auth-status')
+export class DaysIndexComponent {
+  test$ = this._http.get(environment.API_URL + 'auth-status').pipe(
+    tap({ finalize: () => this._loadingS.hide() })
+  )
 
-  constructor(private _http: HttpClient) { }
-
-  ngOnInit(): void {
+  constructor(private _http: HttpClient, private _loadingS: LoadingSpinnerService) {
+    this._loadingS.show()
   }
 
 }

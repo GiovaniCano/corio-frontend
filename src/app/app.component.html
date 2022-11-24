@@ -8,3 +8,5 @@
 <app-mobile-menu *ngIf="(auth$|async) && (showMobileMenu$|async)"></app-mobile-menu>
 
 <app-toasts></app-toasts>
+
+<app-loading-spinner *ngIf="(showLoadingSpinner$|async)"></app-loading-spinner>
