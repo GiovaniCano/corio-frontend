@@ -1,0 +1,9 @@
+@import 'bs-for-components';
+
+:host {
+    display: block;
+}
+
+svg {
+    stroke: $dark;
+}

@@ -1,4 +1,5 @@
-import { ChangeDetectionStrategy, Component, OnInit } from '@angular/core';
+import { ChangeDetectionStrategy, Component } from '@angular/core';
+import { MobileMenuService } from 'src/app/services/mobile-menu.service';
 
 @Component({
   selector: 'app-mobile-menu',
@@ -6,11 +7,11 @@ import { ChangeDetectionStrategy, Component, OnInit } from '@angular/core';
   styleUrls: ['./mobile-menu.component.scss'],
   changeDetection: ChangeDetectionStrategy.OnPush
 })
-export class MobileMenuComponent implements OnInit {
+export class MobileMenuComponent {
 
-  constructor() { }
+  constructor(private _mobileMenuS: MobileMenuService) { }
 
-  ngOnInit(): void {
+  hideMobileMenu() {
+    this._mobileMenuS.hide()
   }
-
 }

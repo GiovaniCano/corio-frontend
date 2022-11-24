@@ -8,6 +8,8 @@ import { NavComponent } from './nav/nav.component';
 import { ToastsComponent } from './toasts/toasts.component';
 import { RouterModule } from '@angular/router';
 import { ModalBaseComponent } from './modal-base/modal-base.component';
+import { HeaderMobileComponent } from './header-mobile/header-mobile.component';
+import { HeaderActionsComponent } from './header-actions/header-actions.component';
 
 
 
@@ -19,7 +21,9 @@ import { ModalBaseComponent } from './modal-base/modal-base.component';
     MobileMenuComponent,
     SideMenuComponent,
     ToastsComponent,
-    ModalBaseComponent
+    ModalBaseComponent,
+    HeaderMobileComponent,
+    HeaderActionsComponent,
   ],
   imports: [
     CommonModule,
@@ -32,7 +36,9 @@ import { ModalBaseComponent } from './modal-base/modal-base.component';
     MobileMenuComponent,
     SideMenuComponent,
     ToastsComponent,
-    ModalBaseComponent
+    ModalBaseComponent,
+    HeaderMobileComponent,
+    HeaderActionsComponent,
   ]
 })
 export class LayoutModule { }
