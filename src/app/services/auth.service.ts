@@ -1,9 +1,8 @@
-import { debugObs } from '../helpers';
 import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import { environment } from 'src/environments/environment';
 import { BehaviorSubject, concat, last, Observable, Subject, tap } from 'rxjs';
-import { Avatar, LoginCredentials, RegisterCredentials, ResetPasswordCredentials, UpdatePasswordCredentials, UpdateProfileCredentials } from '../models/interfaces';
+import { LoginCredentials, RegisterCredentials, ResetPasswordCredentials, UpdatePasswordCredentials, UpdateProfileCredentials } from '../models/interfaces';
 import { Router } from '@angular/router';
 import { User } from '../models/User';
 import { ToastService } from './toast.service';
@@ -55,11 +54,6 @@ export class AuthService {
   confirmPassword(password:string): Observable<any> {
     const url = this.url('user/confirm-password')
     return this._http.post(url, {password: password})
-  }
-
-  avatars(): Observable<Avatar[]> {
-    const url = this.url('avatars')
-    return this._http.get<Avatar[]>(url)
   }
 
   resetPassword(body: ResetPasswordCredentials): Observable<any> {

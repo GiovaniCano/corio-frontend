@@ -1,7 +1,7 @@
 import { ChangeDetectionStrategy, ChangeDetectorRef, Component } from '@angular/core';
 import { FormControl, FormGroup, Validators } from '@angular/forms';
 import { Subscription, tap } from 'rxjs';
-import { password } from 'src/app/c/form-extensions/validators';
+import { password } from 'src/app/c/_base/form-extensions/validators';
 import { UpdatePasswordCredentials } from 'src/app/models/interfaces';
 import { AuthService } from 'src/app/services/auth.service';
 

@@ -4,14 +4,14 @@ import { mT } from './helpers';
 import { AuthGuard } from './guards/auth.guard';
 import { GuestGuard } from './guards/guest.guard';
 
-import { NotFoundComponent } from './c/layout/not-found.component';
-import { LoginComponent } from './c/auth/login/login.component';
-import { RegisterComponent } from './c/auth/register/register.component';
-import { ForgotPasswordComponent } from './c/auth/forgot-password/forgot-password.component';
-import { ResetPasswordComponent } from './c/auth/reset-password/reset-password.component';
+import { NotFoundComponent } from './c/_base/layout/not-found.component';
+import { LoginComponent } from './c/_base/auth/login/login.component';
+import { RegisterComponent } from './c/_base/auth/register/register.component';
+import { ForgotPasswordComponent } from './c/_base/auth/forgot-password/forgot-password.component';
+import { ResetPasswordComponent } from './c/_base/auth/reset-password/reset-password.component';
+import { EditProfileComponent } from './c/_base/user/edit-profile/edit-profile.component';
 
-import { EditProfileComponent } from './c/user/edit-profile/edit-profile.component';
-import { DaysIndexComponent } from './c/user/days-index/days-index.component';
+import { DaysIndexComponent } from './c/days/days-index/days-index.component';
 
 const routes: Routes = [
   { title: mT('Inicio'), path: '', component: DaysIndexComponent, pathMatch: "full", canActivate: [AuthGuard] },

@@ -1,9 +1,10 @@
 import { ChangeDetectionStrategy, ChangeDetectorRef, Component, OnDestroy, OnInit } from '@angular/core';
 import { FormControl, FormGroup, Validators } from '@angular/forms';
 import { Subscription, tap } from 'rxjs';
-import { alphaNumExtras } from 'src/app/c/form-extensions/validators';
+import { alphaNumExtras } from 'src/app/c/_base/form-extensions/validators';
 import { Avatar, UpdateProfileCredentials } from 'src/app/models/interfaces';
 import { AuthService } from 'src/app/services/auth.service';
+import { UserService } from 'src/app/services/user.service';
 
 @Component({
   selector: 'app-edit-profile-form',
@@ -33,7 +34,7 @@ export class EditProfileFormComponent implements OnInit, OnDestroy {
   private userSubs?: Subscription
   private avatarsSubs?: Subscription
 
-  constructor(private _authS: AuthService, private _cd: ChangeDetectorRef) { }
+  constructor(private _authS: AuthService, private _userS: UserService, private _cd: ChangeDetectorRef) { }
 
   setAvatarId(avatar:Avatar) {
     this.selectedAvatar = avatar
@@ -55,7 +56,7 @@ export class EditProfileFormComponent implements OnInit, OnDestroy {
     ).subscribe()
 
     /* avatars */
-    this.avatarsSubs = this._authS.avatars().subscribe(avatars => this.avatars = avatars)
+    this.avatarsSubs = this._userS.avatars().subscribe(avatars => this.avatars = avatars)
   }
 
   submit() {
