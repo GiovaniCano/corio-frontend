@@ -1,6 +1,7 @@
 import { ChangeDetectionStrategy, Component } from '@angular/core';
-import { tap } from 'rxjs';
+import { Observable } from 'rxjs';
 import { LoadingSpinnerService } from 'src/app/services/loading-spinner.service';
+import { ResponsiveService } from 'src/app/services/responsive.service';
 
 @Component({
   selector: 'app-days-index',
@@ -10,7 +11,8 @@ import { LoadingSpinnerService } from 'src/app/services/loading-spinner.service'
 })
 export class DaysIndexComponent {
 
-  constructor(private _loadingS: LoadingSpinnerService) {
-  }
+  sm$: Observable<boolean> = this._responsiveS.media_breakpoint_up('sm')
+
+  constructor(private _responsiveS: ResponsiveService, private _loadingS: LoadingSpinnerService) { }
 
 }

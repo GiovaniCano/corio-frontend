@@ -1,5 +1,21 @@
 <app-header-actions>
-    <button class="btn btn-light">Añadir día</button>
+    <button *ngIf="(sm$ | async); else mobileButtons" class="btn btn-light">Mostrar dÍas</button>
+
+    <ng-template #mobileButtons>    
+        <div class="btn-group">
+            <button class="btn btn-light">Añadir día</button>
+            <div class="btn-group-separator"></div>
+            <button class="btn btn-light">Mostrar dÍas</button>
+        </div>
+    </ng-template>
 </app-header-actions>
 
-<p class="mt-5">days-index works!</p>
+<!-- desktop -->
+<ng-container *ngIf="(sm$ | async); else mobileContent">
+    <p class="mt-5">DESKTOP</p>
+</ng-container>
+
+<!-- mobile -->
+<ng-template #mobileContent>
+    <p class="mt-5">MOBILE</p>
+</ng-template>
