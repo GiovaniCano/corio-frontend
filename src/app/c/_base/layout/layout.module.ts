@@ -11,6 +11,7 @@ import { ModalBaseComponent } from './modal-base/modal-base.component';
 import { HeaderMobileComponent } from './header-mobile/header-mobile.component';
 import { HeaderActionsComponent } from './header-actions/header-actions.component';
 import { LoadingSpinnerComponent } from './loading-spinner/loading-spinner.component';
+import { ButtonSvgComponent } from './button-svg.component';
 
 
 
@@ -26,6 +27,7 @@ import { LoadingSpinnerComponent } from './loading-spinner/loading-spinner.compo
     HeaderMobileComponent,
     HeaderActionsComponent,
     LoadingSpinnerComponent,
+    ButtonSvgComponent,
   ],
   imports: [
     CommonModule,
@@ -42,6 +44,7 @@ import { LoadingSpinnerComponent } from './loading-spinner/loading-spinner.compo
     HeaderMobileComponent,
     HeaderActionsComponent,
     LoadingSpinnerComponent,
+    ButtonSvgComponent,
   ]
 })
 export class LayoutModule { }

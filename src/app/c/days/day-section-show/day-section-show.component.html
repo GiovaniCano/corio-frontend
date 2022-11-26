@@ -1,0 +1,15 @@
+<p>day-section-show works!</p>
+<ul>
+    <ng-container *ngFor="let dish of daySection.dishes">
+        <li>
+            <app-dish-show [dish]="dish"></app-dish-show>
+        </li>
+    </ng-container>
+    <ng-container *ngFor="let item of daySection.itemables">
+        <li>
+            <app-item-show [itemable]="item"></app-item-show>
+        </li>
+    </ng-container>
+</ul>
+<!-- dishes -->
+<!-- items -->

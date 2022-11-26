@@ -1,5 +1,5 @@
 <app-header-actions>
-    <button *ngIf="(sm$ | async); else mobileButtons" class="btn btn-light">Mostrar dÍas</button>
+    <button *ngIf="(sm$ | async); else mobileButtons" class="btn btn-light">Añadir día</button>
 
     <ng-template #mobileButtons>    
         <div class="btn-group">
@@ -10,12 +10,34 @@
     </ng-template>
 </app-header-actions>
 
-<!-- desktop -->
-<ng-container *ngIf="(sm$ | async); else mobileContent">
-    <p class="mt-5">DESKTOP</p>
+
+<ng-container *ngIf="(days$|async) as days; else noDaysYet">
+
+    <!-- desktop -->
+    <ng-container *ngIf="(sm$ | async); else mobileContent">
+        <div class="content-center" id="days-desktop">
+            <main class="days-container">
+                <ng-container *ngFor="let day of days">
+                    <app-day-show [day]="day"></app-day-show>
+                </ng-container>
+            </main>
+        </div>
+    </ng-container>
+    
+    <!-- mobile -->
+    <ng-template #mobileContent>
+        <main id="days-mobile">
+            <ng-container *ngFor="let day of days">
+                <app-day-show [day]="day"></app-day-show>
+            </ng-container>
+        </main>
+    </ng-template>
+
 </ng-container>
 
-<!-- mobile -->
-<ng-template #mobileContent>
-    <p class="mt-5">MOBILE</p>
+<ng-template #noDaysYet>
+    <!-- to keep footer at bottom while loading days -->
+    <div class="content-center"></div>
 </ng-template>
+
+<app-footer></app-footer>

@@ -1,0 +1,8 @@
+<p>dish-show works!</p>
+<ul>
+    <ng-container *ngFor="let item of dish.itemables">
+        <li>
+            <app-item-show [itemable]="item"></app-item-show>
+        </li>
+    </ng-container>
+</ul>

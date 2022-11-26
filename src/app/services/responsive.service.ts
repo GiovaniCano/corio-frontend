@@ -23,6 +23,6 @@ export class ResponsiveService {
   constructor() { }
 
   media_breakpoint_up(breakpoint: 'sm'|'md'|'lg'|'xl'|'xxl'): Observable<boolean> {
-    return this.windowWidth$.pipe(map(width => width > this.breakpoints[breakpoint]))
+    return this.windowWidth$.pipe(map(width => width >= this.breakpoints[breakpoint]))
   }
 }

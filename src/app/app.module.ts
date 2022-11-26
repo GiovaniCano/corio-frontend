@@ -10,12 +10,23 @@ import { SessionExpiredInterceptor } from './interceptors/session-expired.interc
 import { AuthModule } from './c/_base/auth/auth.module';
 import { UserModule } from './c/_base/user/user.module';
 import { LayoutModule } from './c/_base/layout/layout.module';
-import { DaysModule } from './c/days/days.module';
+
+import { DayShowComponent } from './c/days/day-show/day-show.component';
+import { DaysIndexComponent } from './c/days/days-index/days-index.component';
+import { DaySectionShowComponent } from './c/days/day-section-show/day-section-show.component';
+import { DishShowComponent } from './c/dishes/dish-show/dish-show.component';
+import { ItemShowComponent } from './c/items/item-show/item-show.component';
 
 
 @NgModule({
   declarations: [
     AppComponent,
+
+    DaysIndexComponent,
+    DayShowComponent,
+    DaySectionShowComponent,
+    DishShowComponent,
+    ItemShowComponent,
   ],
   imports: [
     BrowserModule,
@@ -24,7 +35,6 @@ import { DaysModule } from './c/days/days.module';
     LayoutModule,
     AuthModule,
     UserModule,
-    DaysModule,
 
     AppRoutingModule
   ],

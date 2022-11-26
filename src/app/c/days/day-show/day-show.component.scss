@@ -1,0 +1,21 @@
+:host {
+    display: block;
+}
+
+.day-container {
+    width: 100%;
+    max-width: 400px;
+    margin: 0 auto;
+    border-radius: 1rem;
+
+    max-height: 70vh;
+    overflow-y: auto;
+
+    /*  The following is not possible because it doesn't works on touch screens... :/ */
+    // @include media-breakpoint-up(sm) {
+    //     overflow-y: hidden;    
+    //     &:hover {
+    //         overflow-y: auto;
+    //     }
+    // }
+}
