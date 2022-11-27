@@ -1,8 +1,15 @@
 <app-side-menu id="app-side-menu" *ngIf="auth$|async"></app-side-menu>
 
-<div id="router-outlet" [ngClass]="{'adjust-margin-to-side-menu': auth$|async}">
-    <app-header-mobile class="d-sm-none" *ngIf="auth$|async"></app-header-mobile>    
-    <router-outlet></router-outlet>
+<div class="container-for-large-screens">
+
+    <div id="router-outlet" [ngClass]="{'adjust-margin-to-side-menu': auth$|async}">
+        <app-header-mobile class="d-sm-none" *ngIf="auth$|async"></app-header-mobile>
+
+        <router-outlet></router-outlet>
+
+        <app-footer id="app-footer"></app-footer>
+    </div>
+    
 </div>
 
 <app-mobile-menu *ngIf="(auth$|async) && (showMobileMenu$|async)"></app-mobile-menu>

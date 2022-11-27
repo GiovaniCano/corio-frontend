@@ -2,14 +2,13 @@
     <h1 class="h2 m-0 me-3">Días</h1>
 
     <div class="page-actions">
-        <button *ngIf="(sm$ | async); else mobileButtons" class="btn btn-light">Añadir día</button>
-        <ng-template #mobileButtons>
-            <div class="btn-group">
-                <button class="btn btn-light">Añadir día</button>
-                <div class="btn-group-separator"></div>
-                <button class="btn btn-light" (click)="showDaysModal = true">Mostrar dÍas</button>
-            </div>
-        </ng-template>
+        <button class="btn btn-light d-none d-sm-block">Añadir día</button>
+
+        <div class="btn-group d-sm-none">
+            <button class="btn btn-light">Añadir día</button>
+            <div class="btn-group-separator"></div>
+            <button class="btn btn-light" (click)="showDaysModal = true">Mostrar dÍas</button>
+        </div>
     </div>
 </header>
 
@@ -62,8 +61,3 @@
     <!-- to keep footer at bottom while loading days -->
     <div class="content-center"></div>
 </ng-template>
-
-
-
-
-<app-footer></app-footer>

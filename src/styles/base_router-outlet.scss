@@ -3,3 +3,6 @@ router-outlet ~ * {
     display: flex;
     flex-direction: column;
 }
+#app-footer {
+    flex: unset;
+}

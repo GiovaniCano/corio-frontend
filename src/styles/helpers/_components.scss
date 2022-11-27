@@ -1,7 +1,10 @@
-.content-center { // #content
+.content-center {
     // for components rendered by router-outlet
     flex: 1;
     display: flex;
     flex-direction: column;
     justify-content: center;
+    @media (min-width: 1601px) {
+        justify-content: start;
+    }
 }

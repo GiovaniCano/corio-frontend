@@ -16,10 +16,10 @@
     flex-direction: column;
 
     &.adjust-margin-to-side-menu {
-        width: 96%;
+        // width: 96%;
         margin: 0 auto;
         @include media-breakpoint-up(sm) {
-            width: 100%;
+            // width: 100%;
             margin-left: calc(24px + 190px); // nav.component.scss -> nav { width }
             margin-right: 24px;
         }
@@ -31,4 +31,16 @@
 #app-side-menu {
     z-index: $z-side-manu;
     /* more styles in side-menu.component.scss */
+}
+
+.container-for-large-screens {    
+    max-width: 1600px;
+    margin: 0 auto;
+    flex: 1;
+    display: flex;
+    width: 96%;
+
+    @include media-breakpoint-up(sm) {
+        width: 100%;
+    }
 }
