@@ -1,5 +1,12 @@
 @import 'bs-for-components';
 
+.page-actions {
+    width: 100%;
+    @include media-breakpoint-up(sm) {
+        width: auto;
+    }
+}
+
 .days-container {
     display: grid;
     grid-template-columns: repeat(1, 1fr);
@@ -11,6 +18,18 @@
 
     @include media-breakpoint-up(xl) {
         grid-template-columns: repeat(3, 1fr);
-        gap: 3vw;
+        column-gap: 3vw;
+        row-gap: 5rem;
+    }
+}
+
+.show-days-modal {
+    width: 100%;
+    max-width: 500px;
+    button {
+        min-height: 40px;
+    }
+    button:not(:last-of-type) {
+        margin-bottom: 1.5rem;
     }
 }

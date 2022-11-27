@@ -1,36 +1,59 @@
-<app-header-actions>
-    <button *ngIf="(sm$ | async); else mobileButtons" class="btn btn-light">Añadir día</button>
+<header class="py-0 pb-3 py-sm-4 d-flex justify-content-sm-between align-items-center">
+    <h1 class="h2 m-0 me-3">Días</h1>
 
-    <ng-template #mobileButtons>    
-        <div class="btn-group">
-            <button class="btn btn-light">Añadir día</button>
-            <div class="btn-group-separator"></div>
-            <button class="btn btn-light">Mostrar dÍas</button>
-        </div>
-    </ng-template>
-</app-header-actions>
+    <div class="page-actions">
+        <button *ngIf="(sm$ | async); else mobileButtons" class="btn btn-light">Añadir día</button>
+        <ng-template #mobileButtons>
+            <div class="btn-group">
+                <button class="btn btn-light">Añadir día</button>
+                <div class="btn-group-separator"></div>
+                <button class="btn btn-light" (click)="showDaysModal = true">Mostrar dÍas</button>
+            </div>
+        </ng-template>
+    </div>
+</header>
+
 
 
 <ng-container *ngIf="(days$|async) as days; else noDaysYet">
 
     <!-- desktop -->
     <ng-container *ngIf="(sm$ | async); else mobileContent">
+
         <div class="content-center" id="days-desktop">
             <main class="days-container">
                 <ng-container *ngFor="let day of days">
-                    <app-day-show [day]="day"></app-day-show>
+                    <app-day-show class="day-show" [day]="day"></app-day-show>
                 </ng-container>
             </main>
         </div>
+
     </ng-container>
     
     <!-- mobile -->
     <ng-template #mobileContent>
+
         <main id="days-mobile">
-            <ng-container *ngFor="let day of days">
-                <app-day-show [day]="day"></app-day-show>
-            </ng-container>
+            <div id="days-mobile-carousel" class="carousel slide">
+                <!-- carousel items -->
+                <div class="carousel-inner">
+                    <ng-container *ngFor="let day of days; index as i">
+                        <div class="carousel-item" [class.active]="currentDayOnMobile === i">
+                            <app-day-show class="day-show" [day]="day"></app-day-show>
+                        </div>
+                    </ng-container>
+                </div>
+            </div>
         </main>
+            <!-- show days mobile modal -->
+            <app-modal-base (close)="showDaysModal = false" *ngIf="showDaysModal">
+                <div class="show-days-modal bg-light px-3 py-4 rounded">
+                    <ng-container *ngFor="let day of days; index as i">
+                        <button #closeModalBtn class="btn btn-primary w-100" (click)="currentDayOnMobile = i">{{ day.name }}</button>
+                    </ng-container>
+                </div>
+            </app-modal-base>
+
     </ng-template>
 
 </ng-container>
@@ -39,5 +62,8 @@
     <!-- to keep footer at bottom while loading days -->
     <div class="content-center"></div>
 </ng-template>
+
+
+
 
 <app-footer></app-footer>

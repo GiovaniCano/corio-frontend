@@ -1,0 +1,36 @@
+@import 'variables';
+
+/* day-section */
+.day-show {
+    .day-section-show:nth-child(odd) {
+        background-color: transparentize($orange, .75);
+        .day-section-header {
+            background-color: $orange;
+        }
+        li {
+            border-top: 1px solid $orange;
+        }
+    }
+    .day-section-show:nth-child(even) {
+        background-color: transparentize($redpink, .75);
+        .day-section-header {
+            background-color: $redpink;
+        }
+        li {
+            border-top: 1px solid $redpink;
+        }
+    }
+}
+
+/* custom accordion */
+.chevron-down {
+    display: none;
+}
+.collapsed {
+    .chevron-up {
+        display: none;
+    }
+    .chevron-down {
+        display: block;
+    }
+}

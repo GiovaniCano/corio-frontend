@@ -1,5 +1,23 @@
-<p>day-section-show works!</p>
-<ul>
+<div class="day-section-header d-flex justify-content-between align-items-stretch">
+    <button data-bs-toggle="collapse" [attr.data-bs-target]="'#daySection-'+daySection.id"
+        type="button" class="ps-3 d-flex align-items-center flex-fill btn-no-style">
+
+        <svg class="chevron-up" xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
+            <path stroke="none" d="M0 0h24v24H0z" fill="none"/>
+            <polyline points="6 15 12 9 18 15" />
+        </svg>
+        <svg class="chevron-down" xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
+            <path stroke="none" d="M0 0h24v24H0z" fill="none"/>
+            <polyline points="6 9 12 15 18 9" />
+        </svg>
+
+        <h4 class="h6 m-0 ms-1">{{ daySection.name }}</h4>
+    </button>
+
+    <app-button-svg type="add" class="pe-2"></app-button-svg>
+</div>
+
+<ul class="list-unstyled collapse show" id="daySection-{{ daySection.id }}">
     <ng-container *ngFor="let dish of daySection.dishes">
         <li>
             <app-dish-show [dish]="dish"></app-dish-show>
@@ -11,5 +29,3 @@
         </li>
     </ng-container>
 </ul>
-<!-- dishes -->
-<!-- items -->

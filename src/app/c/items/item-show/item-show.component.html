@@ -1,1 +1,17 @@
-<p>item-show works!</p>
+<div class="ps-3 d-flex justify-content-between align-items-center">
+    <div class="d-flex align-items-center flex-fill">
+        <svg class="me-2" xmlns="http://www.w3.org/2000/svg" fill="currentColor" viewBox="0 0 18.75 25" width="12" height="12">
+            <path d="M11.375,23.438a7.813,7.813,0,0,1-7.812-7.812A20.474,20.474,0,0,1,6.284,6.063,12.962,12.962,0,0,1,8.947,2.681a3.909,3.909,0,0,1,2.428-1.119A3.909,3.909,0,0,1,13.8,2.681a12.962,12.962,0,0,1,2.662,3.381,20.474,20.474,0,0,1,2.722,9.563A7.812,7.812,0,0,1,11.375,23.438Zm0,1.563a9.375,9.375,0,0,0,9.375-9.375C20.75,8.884,16.063,0,11.375,0S2,8.884,2,15.625A9.375,9.375,0,0,0,11.375,25Z" transform="translate(-2)"/>
+        </svg>
+        <div class="d-flex justify-content-between align-items-center flex-fill">
+            <p class="m-0">{{ itemable.item.name }}</p>
+            <span class="ms-2 text-nowrap">
+                {{ itemable.quantity }} {{ itemable.measurement_unit.abbreviation 
+                                            ?? (itemable.measurement_unit.measurement_type.name === 'Unidad' 
+                                            ? '' : itemable.measurement_unit.name) }}
+            </span>
+        </div>
+    </div>
+
+    <app-button-svg type="add" class="pe-2"></app-button-svg>
+</div>

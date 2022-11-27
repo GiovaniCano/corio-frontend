@@ -15,6 +15,9 @@ export class DaysIndexComponent {
 
   days$ = this._corioS.day_index().pipe(tap({ finalize: () => this._loadingS.hide() }))
 
+  showDaysModal: boolean = false
+  currentDayOnMobile: number = 0
+
   constructor(private _corioS: AppService, private _responsiveS: ResponsiveService, private _loadingS: LoadingSpinnerService) {
     this._loadingS.show()
   }

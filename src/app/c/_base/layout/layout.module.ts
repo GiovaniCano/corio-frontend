@@ -9,7 +9,6 @@ import { ToastsComponent } from './toasts/toasts.component';
 import { RouterModule } from '@angular/router';
 import { ModalBaseComponent } from './modal-base/modal-base.component';
 import { HeaderMobileComponent } from './header-mobile/header-mobile.component';
-import { HeaderActionsComponent } from './header-actions/header-actions.component';
 import { LoadingSpinnerComponent } from './loading-spinner/loading-spinner.component';
 import { ButtonSvgComponent } from './button-svg.component';
 
@@ -25,7 +24,6 @@ import { ButtonSvgComponent } from './button-svg.component';
     ToastsComponent,
     ModalBaseComponent,
     HeaderMobileComponent,
-    HeaderActionsComponent,
     LoadingSpinnerComponent,
     ButtonSvgComponent,
   ],
@@ -42,7 +40,6 @@ import { ButtonSvgComponent } from './button-svg.component';
     ToastsComponent,
     ModalBaseComponent,
     HeaderMobileComponent,
-    HeaderActionsComponent,
     LoadingSpinnerComponent,
     ButtonSvgComponent,
   ]

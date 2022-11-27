@@ -3,10 +3,10 @@ import { MeasurementType } from "./MeasurementType"
 export class MeasurementUnit {
     id: number
     name: string
-    abbreviation: string
+    abbreviation: string | null
     measurement_type: MeasurementType
-    convertion: number
-    user_id: number
+    convertion: number | null
+    user_id: number | null
 
     created_at: string
     updated_at: string

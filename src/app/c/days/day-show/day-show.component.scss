@@ -1,15 +1,22 @@
+@import 'bs-for-components';
+@import 'variables';
+
 :host {
     display: block;
 }
 
 .day-container {
+    box-shadow: none;
+    @include media-breakpoint-up(sm) {
+        box-shadow: $shadow-lg;
+    }
     width: 100%;
     max-width: 400px;
     margin: 0 auto;
     border-radius: 1rem;
 
-    max-height: 70vh;
-    overflow-y: auto;
+    // max-height: 50vh;
+    // overflow-y: auto;
 
     /*  The following is not possible because it doesn't works on touch screens... :/ */
     // @include media-breakpoint-up(sm) {
