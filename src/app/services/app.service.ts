@@ -4,6 +4,7 @@ import { Observable } from 'rxjs';
 import { environment } from 'src/environments/environment';
 import { Day } from '../models/Day';
 import { Dish } from '../models/Dish';
+import { Item } from '../models/Item';
 
 @Injectable({
   providedIn: 'root'
@@ -12,11 +13,14 @@ export class AppService {
 
   constructor(private _http: HttpClient) { }
 
+  item_index(): Observable<Item[]> {
+    const url = this.url('item')
+    return this._http.get<Item[]>(url)
+  }
   dish_index(): Observable<Dish[]> {
     const url = this.url('dish')
     return this._http.get<Dish[]>(url)
-  }
-  
+  }  
   day_index(): Observable<Day[]> {
     const url = this.url('day')
     return this._http.get<Day[]>(url)

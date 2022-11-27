@@ -15,8 +15,10 @@ import { DayShowComponent } from './c/days/day-show/day-show.component';
 import { DaysIndexComponent } from './c/days/days-index/days-index.component';
 import { DaySectionShowComponent } from './c/days/day-section-show/day-section-show.component';
 import { DishShowComponent } from './c/dishes/dish-show/dish-show.component';
-import { ItemShowComponent } from './c/items/item-show/item-show.component';
+import { ItemableShowComponent } from './c/items/itemable-show/itemable-show.component';
 import { DishesIndexComponent } from './c/dishes/dishes-index/dishes-index.component';
+import { ItemsIndexComponent } from './c/items/items-index/items-index.component';
+import { ItemShowComponent } from './c/items/item-show/item-show.component';
 
 
 @NgModule({
@@ -27,8 +29,10 @@ import { DishesIndexComponent } from './c/dishes/dishes-index/dishes-index.compo
     DayShowComponent,
     DaySectionShowComponent,
     DishShowComponent,
-    ItemShowComponent,
+    ItemableShowComponent,
     DishesIndexComponent,
+    ItemsIndexComponent,
+    ItemShowComponent,
   ],
   imports: [
     BrowserModule,

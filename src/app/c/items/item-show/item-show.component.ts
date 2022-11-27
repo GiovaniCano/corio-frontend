@@ -1,5 +1,5 @@
 import { ChangeDetectionStrategy, Component, Input, OnInit } from '@angular/core';
-import { Itemable } from 'src/app/models/Itemable';
+import { Item } from 'src/app/models/Item';
 
 @Component({
   selector: 'app-item-show',
@@ -9,7 +9,7 @@ import { Itemable } from 'src/app/models/Itemable';
 })
 export class ItemShowComponent implements OnInit {
 
-  @Input('itemable') itemable!: Itemable
+  @Input() item!: Item
 
   constructor() { }
 

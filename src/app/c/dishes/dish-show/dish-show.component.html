@@ -31,7 +31,7 @@
     <ul class="list-unstyled collapse" id="daySection_dish-{{ dish.id }}">
         <ng-container *ngFor="let item of dish.itemables">
             <li class="ps-4">
-                <app-item-show [itemable]="item"></app-item-show>
+                <app-itemable-show [itemable]="item"></app-itemable-show>
             </li>
         </ng-container>
     </ul>

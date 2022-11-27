@@ -1,0 +1,40 @@
+<header class="py-0 pb-3 py-sm-4 d-flex justify-content-between align-items-center">
+    <h1 class="h2 m-0 me-3">Items</h1>
+
+    <div class="d-none d-md-block">
+        <button class="btn btn-light">Medidas</button>
+        <button class="btn btn-light ms-4">Crear item</button>
+    </div>
+
+    <div class="btn-group d-md-none">
+        <button class="btn btn-light">Medidas</button>
+        <div class="btn-group-separator"></div>
+        <button class="btn btn-light">Crear item</button>
+    </div>
+</header>
+
+
+
+<ng-container *ngIf="(items$|async) as items; else noItemsYet">
+
+    <div class="content-center">
+        <main class="items-container row g-2">
+            <ng-container *ngFor="let item of items">
+                <div class="col-lg-6">
+                    <app-item-show [item]="item" class="item-show rounded bg-light"></app-item-show>
+                </div>
+            </ng-container>
+        </main>
+    </div>
+
+</ng-container>
+
+<ng-template #noItemsYet>
+    <!-- to keep footer at bottom while loading -->
+    <div class="content-center"></div>
+</ng-template>
+
+
+
+
+<app-footer></app-footer>
