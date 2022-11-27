@@ -1,0 +1,30 @@
+<header class="py-0 pb-3 py-sm-4 d-flex justify-content-sm-between align-items-center">
+    <h1 class="h2 m-0 me-3">Platillos</h1>
+    <button class="btn btn-light">Crear platillo</button>
+</header>
+
+
+
+<ng-container *ngIf="(dishes$|async) as dishes; else noDishesYet">
+
+    <div class="content-center">
+        <main class="dishes-container row g-2">
+            <ng-container *ngFor="let dish of dishes">
+                <div class="col-lg-6">
+                    <app-dish-show class="dish-show rounded bg-light" [dish]="dish" [editBtn]="true"></app-dish-show>
+                </div>
+            </ng-container>
+        </main>
+    </div>
+
+</ng-container>
+
+<ng-template #noDishesYet>
+    <!-- to keep footer at bottom while loading -->
+    <div class="content-center"></div>
+</ng-template>
+
+
+
+
+<app-footer></app-footer>

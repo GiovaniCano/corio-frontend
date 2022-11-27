@@ -12,8 +12,10 @@ import { ResetPasswordComponent } from './c/_base/auth/reset-password/reset-pass
 import { EditProfileComponent } from './c/_base/user/edit-profile/edit-profile.component';
 
 import { DaysIndexComponent } from './c/days/days-index/days-index.component';
+import { DishesIndexComponent } from './c/dishes/dishes-index/dishes-index.component';
 
 const routes: Routes = [
+  { title: mT('Platillos'), path: 'dishes', component: DishesIndexComponent, canActivate: [AuthGuard] },
   { title: mT('Inicio'), path: '', component: DaysIndexComponent, pathMatch: "full", canActivate: [AuthGuard] },
 
   { title: mT('Editar perfil'), path: 'user/edit-profile', component: EditProfileComponent, canActivate: [AuthGuard] },

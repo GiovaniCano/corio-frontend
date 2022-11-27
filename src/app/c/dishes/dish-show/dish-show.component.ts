@@ -9,7 +9,8 @@ import { Dish } from 'src/app/models/Dish';
 })
 export class DishShowComponent implements OnInit {
 
-  @Input('dish') dish!: Dish
+  @Input() dish!: Dish
+  @Input() editBtn: boolean = false
 
   constructor() { }
 
