@@ -16,7 +16,7 @@ export class MeasurementUnit {
         this.name = args?.name ?? ''
         this.abbreviation = args?.abbreviation ?? ''
         this.measurement_type = args?.measurement_type ?? new MeasurementType()
-        this.convertion = args?.convertion ?? 0
+        this.convertion = args?.convertion ?? null
         this.user_id = args?.user_id ?? 0
 
         this.created_at = args?.created_at ?? ''

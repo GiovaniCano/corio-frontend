@@ -5,6 +5,7 @@ import { environment } from 'src/environments/environment';
 import { Day } from '../models/Day';
 import { Dish } from '../models/Dish';
 import { Item } from '../models/Item';
+import { MeasurementUnit } from '../models/MeasurementUnit';
 
 @Injectable({
   providedIn: 'root'
@@ -13,6 +14,10 @@ export class AppService {
 
   constructor(private _http: HttpClient) { }
 
+  measurementUnit_index(): Observable<MeasurementUnit[]> {
+    const url = this.url('measurement-unit')
+    return this._http.get<MeasurementUnit[]>(url)
+  }
   item_index(): Observable<Item[]> {
     const url = this.url('item')
     return this._http.get<Item[]>(url)

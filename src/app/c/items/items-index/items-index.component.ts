@@ -11,6 +11,9 @@ import { LoadingSpinnerService } from 'src/app/services/loading-spinner.service'
 })
 export class ItemsIndexComponent {
   items$ = this._corioS.item_index().pipe(tap({ finalize: () => this._loadingS.hide() }))
+  measurementUnits$ = this._corioS.measurementUnit_index()
+
+  showUnitsModal: boolean = false
 
   constructor(private _corioS: AppService, private _loadingS: LoadingSpinnerService) {
     this._loadingS.show()

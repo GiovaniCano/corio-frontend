@@ -2,12 +2,12 @@
     <h1 class="h2 m-0 me-3">Items</h1>
 
     <div class="d-none d-md-block">
-        <button class="btn btn-light">Medidas</button>
+        <button class="btn btn-light" (click)="showUnitsModal = true">Medidas</button>
         <button class="btn btn-light ms-4">Crear item</button>
     </div>
 
     <div class="btn-group d-md-none">
-        <button class="btn btn-light">Medidas</button>
+        <button class="btn btn-light" (click)="showUnitsModal = true">Medidas</button>
         <div class="btn-group-separator"></div>
         <button class="btn btn-light">Crear item</button>
     </div>
@@ -33,3 +33,35 @@
     <!-- to keep footer at bottom while loading -->
     <div class="content-center"></div>
 </ng-template>
+
+<!-- modal -->
+<app-modal-base [class.d-none]="!showUnitsModal" (close)="showUnitsModal = false">
+    <div class="show-days-modal bg-light p-3 rounded">
+        <div>
+            <button class="btn btn-light d-block ms-auto mb-3" type="button">Añadir unidad</button>
+        </div>
+        <div class="table-responsive">
+            <table class="table table-sm table-striped-columns">
+                <thead>
+                    <th class="text-center pb-2">Nombre</th>
+                    <th class="text-center pb-2">Abreviación</th>
+                    <th class="text-center pb-2">Tipo</th>
+                    <th class="text-center pb-2">Equivalencia</th>
+                    <th class="text-center pb-2">Editar</th>
+                </thead>
+                <tbody>
+                    <tr *ngFor="let unit of measurementUnits$|async">
+                        <td>{{ unit.name }}</td>
+                        <td class="text-center">{{ unit.abbreviation }}</td>
+                        <td class="text-center px-2">{{ unit.measurement_type.name }}</td>
+                        <td class="text-end">{{ unit.convertion }} 
+                            <span *ngIf="unit.convertion && unit.measurement_type.id === 2">g</span>
+                            <span *ngIf="unit.convertion && unit.measurement_type.id === 3">ml</span>
+                        </td>
+                        <td class="text-center"><app-button-svg *ngIf="![1,2,3,4,5].includes(unit.id)" type="edit"></app-button-svg></td>
+                    </tr>
+                </tbody>
+            </table>
+        </div>
+    </div>
+</app-modal-base>
