@@ -1,21 +1,19 @@
+import { Itemable } from "./Itemable"
 import { MeasurementType } from "./MeasurementType"
 
-export class Item {
-    id: number
-    name: string
-    user_id: number
-    measurement_type: MeasurementType
+export class Item_Post {
+    constructor(public name: string, public measurement_type_id: number) {
+        this.name = name
+        this.measurement_type_id = measurement_type_id
+    }
+}
 
+export interface Item extends Item_Post {
+    id: number
+    user_id: number
     created_at: string
     updated_at: string
 
-    constructor(args?: Item ) {
-        this.id = args?.id ?? 0
-        this.name = args?.name ?? ''
-        this.user_id = args?.user_id ?? 0
-        this.measurement_type = args?.measurement_type ?? new MeasurementType()
-
-        this.created_at = args?.created_at ?? ''
-        this.updated_at = args?.updated_at ?? ''
-    }
+    measurement_type: MeasurementType
+    pivot?: Itemable
 }

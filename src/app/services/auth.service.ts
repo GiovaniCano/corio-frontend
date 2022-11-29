@@ -2,7 +2,7 @@ import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import { environment } from 'src/environments/environment';
 import { BehaviorSubject, concat, last, Observable, Subject, tap } from 'rxjs';
-import { LoginCredentials, RegisterCredentials, ResetPasswordCredentials, UpdatePasswordCredentials, UpdateProfileCredentials } from '../models/interfaces';
+import { LoginCredentials, RegisterCredentials, ResetPasswordCredentials, UpdatePasswordCredentials, UpdateProfileCredentials } from '../models/_types';
 import { Router } from '@angular/router';
 import { User } from '../models/User';
 import { ToastService } from './toast.service';

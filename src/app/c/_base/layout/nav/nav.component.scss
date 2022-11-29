@@ -20,8 +20,10 @@ nav {
     display: flex;
     flex-direction: column;
     justify-content: space-between;
-    padding: 2vh 0 2vh 1rem;
-
+    padding: 2vh 1rem;
+    @include media-breakpoint-up(sm) {
+        padding: 2vh 0 2vh 1rem;
+    }
     align-items: center;
     margin: 0 auto;
     @include media-breakpoint-up(sm) {

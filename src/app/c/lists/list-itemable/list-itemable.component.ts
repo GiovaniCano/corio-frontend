@@ -2,13 +2,12 @@ import { ChangeDetectionStrategy, Component, Input, OnInit } from '@angular/core
 import { Item } from 'src/app/models/Item';
 
 @Component({
-  selector: 'app-itemable-show',
-  templateUrl: './itemable-show.component.html',
-  styleUrls: ['./itemable-show.component.scss'],
+  selector: 'app-list-itemable',
+  templateUrl: './list-itemable.component.html',
+  styleUrls: ['./list-itemable.component.scss'],
   changeDetection: ChangeDetectionStrategy.OnPush
 })
-export class ItemableShowComponent implements OnInit {
-
+export class ListItemableComponent implements OnInit {
   @Input() item!: Item
 
   constructor() { }

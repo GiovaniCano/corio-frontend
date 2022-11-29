@@ -10,9 +10,9 @@ import { LoadingSpinnerService } from 'src/app/services/loading-spinner.service'
   changeDetection: ChangeDetectionStrategy.OnPush
 })
 export class DishesIndexComponent {
-  dishes$ = this._corioS.dish_index().pipe(tap({ finalize: () => this._loadingS.hide() }))
+  dishes$ = this._appS.dish_index().pipe(tap({ finalize: () => this._loadingS.hide() }))
 
-  constructor(private _corioS: AppService, private _loadingS: LoadingSpinnerService) {
+  constructor(private _appS: AppService, private _loadingS: LoadingSpinnerService) {
     this._loadingS.show()
   }
 

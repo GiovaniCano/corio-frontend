@@ -2,7 +2,7 @@ import { ChangeDetectionStrategy, ChangeDetectorRef, Component, OnDestroy, OnIni
 import { FormControl, FormGroup, Validators } from '@angular/forms';
 import { ActivatedRoute, ParamMap } from '@angular/router';
 import { Subscription, tap } from 'rxjs';
-import { ResetPasswordCredentials } from 'src/app/models/interfaces';
+import { ResetPasswordCredentials } from 'src/app/models/_types';
 import { AuthService } from 'src/app/services/auth.service';
 import { password } from '../../form-extensions/validators';
 

@@ -1,5 +1,6 @@
-import { ChangeDetectionStrategy, Component } from '@angular/core';
-import { tap } from 'rxjs';
+import { ChangeDetectionStrategy, Component, OnDestroy, OnInit } from '@angular/core';
+import { Subscription, tap } from 'rxjs';
+import { MeasurementUnit } from 'src/app/models/MeasurementUnit';
 import { AppService } from 'src/app/services/app.service';
 import { LoadingSpinnerService } from 'src/app/services/loading-spinner.service';
 
@@ -9,13 +10,23 @@ import { LoadingSpinnerService } from 'src/app/services/loading-spinner.service'
   styleUrls: ['./items-index.component.scss'],
   changeDetection: ChangeDetectionStrategy.OnPush
 })
-export class ItemsIndexComponent {
-  items$ = this._corioS.item_index().pipe(tap({ finalize: () => this._loadingS.hide() }))
-  measurementUnits$ = this._corioS.measurementUnit_index()
+export class ItemsIndexComponent implements OnInit, OnDestroy {
+  items$ = this._appS.item_index().pipe(tap({ finalize: () => this._loadingS.hide() }))
+  units!: MeasurementUnit[]
 
   showUnitsModal: boolean = false
 
-  constructor(private _corioS: AppService, private _loadingS: LoadingSpinnerService) {
+  unitsSubs!: Subscription
+
+  constructor(private _appS: AppService, private _loadingS: LoadingSpinnerService) {
     this._loadingS.show()
+  }
+
+  ngOnInit(): void {
+    this.unitsSubs =  this._appS.measurementUnit_index().subscribe(units => this.units = units)
+  }
+
+  ngOnDestroy(): void {
+    this.unitsSubs.unsubscribe()
   }
 }

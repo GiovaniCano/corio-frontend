@@ -1,6 +1,6 @@
 import { AfterViewChecked, ChangeDetectionStrategy, Component, ElementRef, ViewChildren } from '@angular/core';
 import { Observable, tap } from 'rxjs';
-import { Toast } from 'src/app/models/interfaces';
+import { Toast } from 'src/app/models/_types';
 import { ToastService } from 'src/app/services/toast.service';
 declare const bootstrap: any;
 

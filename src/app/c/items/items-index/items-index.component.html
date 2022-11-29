@@ -35,7 +35,7 @@
 </ng-template>
 
 <!-- modal -->
-<app-modal-base [class.d-none]="!showUnitsModal" (close)="showUnitsModal = false">
+<app-modal-base *ngIf="showUnitsModal" (close)="showUnitsModal = false">
     <div class="show-days-modal bg-light p-3 rounded">
         <div>
             <button class="btn btn-light d-block ms-auto mb-3" type="button">Añadir unidad</button>
@@ -50,7 +50,7 @@
                     <th class="text-center pb-2">Editar</th>
                 </thead>
                 <tbody>
-                    <tr *ngFor="let unit of measurementUnits$|async">
+                    <tr *ngFor="let unit of units">
                         <td>{{ unit.name }}</td>
                         <td class="text-center">{{ unit.abbreviation }}</td>
                         <td class="text-center px-2">{{ unit.measurement_type.name }}</td>

@@ -1,36 +1,36 @@
-export interface LoginCredentials {
+export type LoginCredentials = {
     email: string
     password: string
     remember: boolean
 }
-export interface RegisterCredentials {
+export type RegisterCredentials = {
     email: string
     username: string
     password: string
     password_confirmation: string
 }
-export interface ResetPasswordCredentials {
+export type ResetPasswordCredentials = {
     email: string
     token: string
     password: string
     password_confirmation: string
 }
-export interface UpdatePasswordCredentials {
+export type UpdatePasswordCredentials = {
     current_password: string
     password: string
     password_confirmation: string
 }
-export interface UpdateProfileCredentials {
+export type UpdateProfileCredentials = {
     email: string
     username: string
     avatar_id: number
 }
-export interface Avatar {
+export type Avatar = {
     id: number
     name: string
 }
 
-export interface Toast {
+export type Toast = {
     type: 'info'|'success'|'danger'
     message: string
 }

@@ -1,7 +1,7 @@
 import { ChangeDetectionStrategy, ChangeDetectorRef, Component, OnDestroy } from '@angular/core';
 import { FormControl, FormGroup, Validators } from '@angular/forms';
 import { Subscription, tap } from 'rxjs';
-import { RegisterCredentials } from 'src/app/models/interfaces';
+import { RegisterCredentials } from 'src/app/models/_types';
 import { AuthService } from 'src/app/services/auth.service';
 import { alphaNumExtras, password } from '../../form-extensions/validators';
 

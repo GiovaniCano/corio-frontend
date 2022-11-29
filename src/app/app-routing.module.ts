@@ -14,8 +14,10 @@ import { EditProfileComponent } from './c/_base/user/edit-profile/edit-profile.c
 import { DaysIndexComponent } from './c/days/days-index/days-index.component';
 import { DishesIndexComponent } from './c/dishes/dishes-index/dishes-index.component';
 import { ItemsIndexComponent } from './c/items/items-index/items-index.component';
+import { ListsIndexComponent } from './c/lists/lists-index/lists-index.component';
 
 const routes: Routes = [
+  { title: mT('Listas'), path: 'lists', component: ListsIndexComponent, canActivate: [AuthGuard] },
   { title: mT('Items'), path: 'items', component: ItemsIndexComponent, canActivate: [AuthGuard] },
   { title: mT('Platillos'), path: 'dishes', component: DishesIndexComponent, canActivate: [AuthGuard] },
   { title: mT('Inicio'), path: '', component: DaysIndexComponent, pathMatch: "full", canActivate: [AuthGuard] },

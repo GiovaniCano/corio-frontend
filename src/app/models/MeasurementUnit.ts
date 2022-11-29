@@ -1,25 +1,24 @@
 import { MeasurementType } from "./MeasurementType"
 
-export class MeasurementUnit {
-    id: number
-    name: string
-    abbreviation: string | null
-    measurement_type: MeasurementType
-    convertion: number | null
-    user_id: number | null
+export class MeasurementUnit_Post {
+    constructor(
+        public name: string ,
+        public abbreviation: string | null ,
+        public measurement_type_id: number ,
+        public convertion: number | null ,
+    ) {
+        this.name = name
+        this.abbreviation = abbreviation ?? null
+        this.measurement_type_id = measurement_type_id
+        this.convertion = convertion ?? null
+    }
+}
 
+export interface MeasurementUnit extends MeasurementUnit_Post {
+    id: number
+    user_id: number | null
     created_at: string
     updated_at: string
-
-    constructor(args?: MeasurementUnit ) {
-        this.id = args?.id ?? 0
-        this.name = args?.name ?? ''
-        this.abbreviation = args?.abbreviation ?? ''
-        this.measurement_type = args?.measurement_type ?? new MeasurementType()
-        this.convertion = args?.convertion ?? null
-        this.user_id = args?.user_id ?? 0
-
-        this.created_at = args?.created_at ?? ''
-        this.updated_at = args?.updated_at ?? ''
-    }
+    
+    measurement_type: MeasurementType
 }

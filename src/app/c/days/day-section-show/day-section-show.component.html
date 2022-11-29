@@ -23,9 +23,9 @@
             <app-dish-show [dish]="dish"></app-dish-show>
         </li>
     </ng-container>
-    <ng-container *ngFor="let item of daySection.itemables">
+    <ng-container *ngFor="let item of daySection.items">
         <li>
-            <app-itemable-show [itemable]="item"></app-itemable-show>
+            <app-itemable-show [item]="item"></app-itemable-show>
         </li>
     </ng-container>
 </ul>

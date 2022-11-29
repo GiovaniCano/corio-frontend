@@ -19,6 +19,9 @@ import { ItemableShowComponent } from './c/items/itemable-show/itemable-show.com
 import { DishesIndexComponent } from './c/dishes/dishes-index/dishes-index.component';
 import { ItemsIndexComponent } from './c/items/items-index/items-index.component';
 import { ItemShowComponent } from './c/items/item-show/item-show.component';
+import { ListsIndexComponent } from './c/lists/lists-index/lists-index.component';
+import { ListItemableComponent } from './c/lists/list-itemable/list-itemable.component';
+import { ListShowComponent } from './c/lists/list-show/list-show.component';
 
 
 @NgModule({
@@ -33,6 +36,9 @@ import { ItemShowComponent } from './c/items/item-show/item-show.component';
     DishesIndexComponent,
     ItemsIndexComponent,
     ItemShowComponent,
+    ListsIndexComponent,
+    ListItemableComponent,
+    ListShowComponent,
   ],
   imports: [
     BrowserModule,

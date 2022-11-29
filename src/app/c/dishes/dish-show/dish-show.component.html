@@ -3,7 +3,7 @@
     
     <div class="dish-header d-flex justify-content-between align-items-stretch">
 
-        <button data-bs-toggle="collapse" [attr.data-bs-target]="'#daySection_dish-' + dish.id"
+        <button data-bs-toggle="collapse" [attr.data-bs-target]="'#daySection_dish-' + (dish.pivot?.id || dish.id)"
         type="button" class="collapsed ps-3 d-flex align-items-center flex-fill btn-no-style">
 
             <svg class="me-1" xmlns="http://www.w3.org/2000/svg" fill="currentColor" viewBox="0 0 25 25" width="13" height="13">
@@ -28,10 +28,10 @@
         </div>
     </div>
 
-    <ul class="list-unstyled collapse" id="daySection_dish-{{ dish.id }}">
-        <ng-container *ngFor="let item of dish.itemables">
+    <ul class="list-unstyled collapse" id="daySection_dish-{{ (dish.pivot?.id || dish.id) }}">
+        <ng-container *ngFor="let item of dish.items">
             <li class="ps-4">
-                <app-itemable-show [itemable]="item"></app-itemable-show>
+                <app-itemable-show [item]="item"></app-itemable-show>
             </li>
         </ng-container>
     </ul>

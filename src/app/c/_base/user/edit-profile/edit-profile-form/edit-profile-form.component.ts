@@ -2,7 +2,7 @@ import { ChangeDetectionStrategy, ChangeDetectorRef, Component, OnDestroy, OnIni
 import { FormControl, FormGroup, Validators } from '@angular/forms';
 import { Subscription, tap } from 'rxjs';
 import { alphaNumExtras } from 'src/app/c/_base/form-extensions/validators';
-import { Avatar, UpdateProfileCredentials } from 'src/app/models/interfaces';
+import { Avatar, UpdateProfileCredentials } from 'src/app/models/_types';
 import { AuthService } from 'src/app/services/auth.service';
 import { UserService } from 'src/app/services/user.service';
 

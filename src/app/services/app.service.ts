@@ -5,6 +5,7 @@ import { environment } from 'src/environments/environment';
 import { Day } from '../models/Day';
 import { Dish } from '../models/Dish';
 import { Item } from '../models/Item';
+import { List } from '../models/List';
 import { MeasurementUnit } from '../models/MeasurementUnit';
 
 @Injectable({
@@ -14,6 +15,10 @@ export class AppService {
 
   constructor(private _http: HttpClient) { }
 
+  list_index(): Observable<List[]> {
+    const url = this.url('list')
+    return this._http.get<List[]>(url)
+  }
   measurementUnit_index(): Observable<MeasurementUnit[]> {
     const url = this.url('measurement-unit')
     return this._http.get<MeasurementUnit[]>(url)
