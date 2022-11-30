@@ -9,6 +9,7 @@ import { List } from 'src/app/models/List';
 })
 export class ListShowComponent implements OnInit {
   @Input() list!: List
+  @Input() showTrails!: boolean
 
   constructor() { }
 

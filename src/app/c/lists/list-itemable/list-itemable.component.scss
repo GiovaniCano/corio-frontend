@@ -1,3 +1,11 @@
+@import 'bs-for-components';
+
 :host {
     display: block;
+    margin-bottom: .5rem;
+    padding: 0 1rem;
+}
+
+small {
+    color: $orange-700;
 }

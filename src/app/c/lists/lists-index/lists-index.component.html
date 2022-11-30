@@ -31,7 +31,7 @@
         <div class="content-center" id="lists-desktop">
             <main class="lists-container">
                 <ng-container *ngFor="let list of lists">
-                    <app-list-show [list]="list"></app-list-show>
+                    <app-list-show [list]="list" [showTrails]="showTrails"></app-list-show>
                 </ng-container>
             </main>
         </div>
@@ -47,7 +47,7 @@
                 <div class="carousel-inner">
                     <ng-container *ngFor="let list of lists; index as i">
                         <div class="carousel-item" [class.active]="currentListOnMobile === i">
-                            <app-list-show [list]="list"></app-list-show>
+                            <app-list-show [list]="list" [showTrails]="showTrails"></app-list-show>
                         </div>
                     </ng-container>
                 </div>
