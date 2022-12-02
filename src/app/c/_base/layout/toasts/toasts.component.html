@@ -9,13 +9,13 @@
           {{ toast.message }}
         </div>
         
-        <button (click)="deleteToast(i)" type="button" class="btn-close me-3 m-auto" data-bs-dismiss="toast" aria-label="Close"></button>
+        <button (click)="deleteToast(toast.id!)" type="button" class="btn-close me-3 m-auto" data-bs-dismiss="toast" aria-label="Close"></button>
       </div>
-    </div><
+    </div>
 
   </ng-container>
 
 </div>
 
 <!-- debug -->
-<!-- <button (click)="createToast()">Create toast</button> -->
+<button (click)="createToast()">Create toast</button>

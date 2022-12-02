@@ -31,6 +31,7 @@ export type Avatar = {
 }
 
 export type Toast = {
+    id?: number
     type: 'info'|'success'|'danger'
     message: string
 }

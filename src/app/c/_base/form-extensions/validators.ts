@@ -10,3 +10,9 @@ export const alphaNumExtras: ValidatorFn = (input: AbstractControl): null | Vali
     const regex = new RegExp(/^[a-z0-9áéíóúñü.'_-]+$/i)
     return regex.test(input.value) ? null : { alphaNumExtras: true }
 }
+
+export function requiredSelect(invalidValue: number | string): ValidatorFn {
+    return (control: AbstractControl): null | ValidationErrors  => {
+        return control.value == invalidValue ? { required: true } : null
+    }
+}

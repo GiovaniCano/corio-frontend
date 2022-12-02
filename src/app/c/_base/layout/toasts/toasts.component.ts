@@ -20,14 +20,16 @@ export class ToastsComponent implements AfterViewChecked {
   constructor(private _toastService: ToastService) { }
 
   ngAfterViewChecked(): void {
-    this.toastsInView.forEach(function(toast) {
-      const bsToast = new bootstrap.Toast(toast.nativeElement, {autohide: false, animation: false})
-      bsToast.show()
-    })
+    if(this.toastsInView.length > 0) {
+      this.toastsInView.forEach(function(toast) {
+        const bsToast = new bootstrap.Toast(toast.nativeElement, {autohide: true, animation: false})
+        bsToast.show()
+      })
+    }
   }
 
-  deleteToast(index: number) {
-    this._toastService.deleteToast(index)
+  deleteToast(id: number) {
+    this._toastService.deleteToast(id)
   }
 
   /* debug */

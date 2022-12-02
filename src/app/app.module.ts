@@ -3,6 +3,7 @@ import { BrowserModule } from '@angular/platform-browser';
 import { HttpClientModule, HTTP_INTERCEPTORS } from '@angular/common/http';
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
+import { FormExtensionsModule } from './c/_base/form-extensions/form-extensions.module';
 
 import { WithCredentialsInterceptor } from './interceptors/with-credentials.interceptor';
 import { SessionExpiredInterceptor } from './interceptors/session-expired.interceptor';
@@ -23,6 +24,8 @@ import { ListsIndexComponent } from './c/lists/lists-index/lists-index.component
 import { ListItemableComponent } from './c/lists/list-itemable/list-itemable.component';
 import { ListShowComponent } from './c/lists/list-show/list-show.component';
 
+import { ItemFormModalComponent } from './c/items/item-form-modal/item-form-modal.component';
+
 
 @NgModule({
   declarations: [
@@ -39,10 +42,13 @@ import { ListShowComponent } from './c/lists/list-show/list-show.component';
     ListsIndexComponent,
     ListItemableComponent,
     ListShowComponent,
+
+    ItemFormModalComponent,
   ],
   imports: [
     BrowserModule,
     HttpClientModule,
+    FormExtensionsModule,
 
     LayoutModule,
     AuthModule,

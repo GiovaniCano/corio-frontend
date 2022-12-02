@@ -9,3 +9,12 @@ export const debugObs = () => tap({
     finalize: () => console.log('finalize'),
     // complete: () => console.log('complete')
 })
+
+export const sortObjectsArray = (array: any[], propertyToSort: string = 'name') => {
+    return array.sort(function (a, b) {
+        a = a[propertyToSort]
+        b = b[propertyToSort]
+
+        return a.localeCompare(b)
+    })
+}

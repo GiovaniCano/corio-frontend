@@ -8,9 +8,15 @@
         </div>
     </div>
 
-    <app-button-svg type="edit" class="me-1"></app-button-svg>
+    <app-button-svg type="edit" class="me-1" (click)="showEditItemModal = true"></app-button-svg>
     <app-button-svg type="add" class="pe-2"></app-button-svg>
 </div>
-<!-- <div class="px-4 py-1 border border-0 border-top">
-    <p class="m-0">Tipo de medida: {{ item.measurement_type.name }}</p>
-</div> -->
+
+
+<!-- create item modal -->
+<app-item-form-modal *ngIf="showEditItemModal" 
+    [itemToEdit]="item" 
+    (close)="showEditItemModal = false" 
+    (itemUpdated)="updateItem($event)" 
+    (itemDeleted)="deleteItem($event)" 
+></app-item-form-modal>

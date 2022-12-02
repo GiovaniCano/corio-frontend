@@ -1,0 +1,48 @@
+<app-modal-base (close)="onClose()">
+    <div class="p-3 bg-light rounded item-form-modal">
+        <h4 class="text-center mb-3">{{ itemToEdit ? 'Editar item' : 'Crear item' }}</h4>
+
+        <form [formGroup]="form" (submit)="submit()">
+            <app-form-control-a
+                formControlName="name"
+                [control]="name"
+                type="text" 
+                label="Nombre" 
+                placeholder="Nombre del ingrediente, condimento, especia, etc"></app-form-control-a>
+
+            <app-form-control-select-a
+                formControlName="measurement_type_id"
+                [control]="measurement_type_id"
+                type="select" 
+                label="Tipo" 
+                placeholder="placeholderu chan"
+            >
+                <option value="0" selected disabled class="d-none">Elige un tipo de medida</option>
+                <option value="2">Peso</option>
+                <option value="3">Volumen</option>
+                <option value="1">Unidad</option>
+            </app-form-control-select-a>
+
+            <div class="d-flex justify-content-center">
+                <button type="button" class="btn btn-danger" (click)="showConfirmDeleteModal = true" *ngIf="itemToEdit">
+                    Eliminar item
+                </button>
+                <button type="submit" class="btn-form" [disabled]="(form.statusChanges | async) !== 'VALID'">
+                    <span class="spinner-border spinner-border-sm" *ngIf="showSpinner"></span>
+                    {{ itemToEdit ? 'Actualizar' : 'Crear' }}
+                </button>
+            </div>
+        </form>
+    </div>
+</app-modal-base>
+
+<!-- confirm delete modal -->
+<app-modal-base *ngIf="itemToEdit && showConfirmDeleteModal" (close)="showConfirmDeleteModal = false">
+    <div class="p-3 bg-light rounded confirm-delete-modal">
+        <p class="text-center">¿Eliminar "{{ itemToEdit.name }}"?</p>
+        <div class="d-flex justify-content-between">
+            <button #closeModalBtn type="button" class="btn">Cancelar</button>
+            <button #closeModalBtn type="button" class="btn btn-danger" (click)="deleteItem(itemToEdit.id)">Eliminar</button>
+        </div>
+    </div>
+</app-modal-base>
