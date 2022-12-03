@@ -30,6 +30,8 @@ export class ItemFormModalComponent implements OnDestroy, OnInit {
   get name() { return this.form.controls.name }
   get measurement_type_id() { return this.form.controls.measurement_type_id }
 
+  types$ = this._appS.measurementType_index()
+
   showSpinner: boolean = false
   showConfirmDeleteModal: boolean = false
 

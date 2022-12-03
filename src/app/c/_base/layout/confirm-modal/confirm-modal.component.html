@@ -1,0 +1,11 @@
+<app-modal-base (close)="onClose()">
+    <div class="p-3 bg-light rounded confirm-delete-modal">
+        <p class="text-center">
+            <ng-content></ng-content>
+        </p>
+        <div class="d-flex justify-content-between">
+            <button #closeModalBtn type="button" class="btn {{ cancelClasses }}">{{ cancelText }}</button>
+            <button #closeModalBtn type="button" class="btn {{ confirmClasses }}" (click)="onConfirm()">{{ confirmText }}</button>
+        </div>
+    </div>
+</app-modal-base>

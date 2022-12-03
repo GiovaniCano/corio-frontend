@@ -10,12 +10,15 @@ export class LoadingSpinnerService {
   private _status = new BehaviorSubject<boolean>(false)
   status$ = this._status.asObservable()
 
+  private timeOut: any
+
   constructor() { }
 
   show(): void {
     this._status.next(true)
+    window.clearTimeout(this.timeOut)
 
-    setTimeout(() => {
+    this.timeOut = setTimeout(() => {
       if(this._status.getValue()) {
         this._status.next(false)
       }

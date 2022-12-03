@@ -25,6 +25,9 @@ import { ListItemableComponent } from './c/lists/list-itemable/list-itemable.com
 import { ListShowComponent } from './c/lists/list-show/list-show.component';
 
 import { ItemFormModalComponent } from './c/items/item-form-modal/item-form-modal.component';
+import { DishFormComponent } from './c/dishes/dish-form/dish-form.component';
+import { ItemsIndexModalComponent } from './c/items/items-index-modal/items-index-modal.component';
+import { ItemableFormComponent } from './c/items/itemable-form/itemable-form.component';
 
 
 @NgModule({
@@ -44,6 +47,9 @@ import { ItemFormModalComponent } from './c/items/item-form-modal/item-form-moda
     ListShowComponent,
 
     ItemFormModalComponent,
+      DishFormComponent,
+      ItemsIndexModalComponent,
+      ItemableFormComponent,
   ],
   imports: [
     BrowserModule,

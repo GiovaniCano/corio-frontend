@@ -6,12 +6,16 @@
         <div class="d-flex justify-content-between align-items-center flex-fill">
             <p class="m-0">{{ item.name }}</p>
             <span class="ms-2 text-nowrap">
-                {{ item.pivot?.quantity }} {{ item.pivot?.measurement_unit?.abbreviation 
-                                            ?? (item.pivot?.measurement_unit?.measurement_type?.name === 'Unidad' 
-                                            ? '' : item.pivot?.measurement_unit?.name) }}
+                {{ item.pivot?.quantity }} 
+                {{ getUnitAbbreviationOrName(item) }}
             </span>
         </div>
     </div>
 
-    <app-button-svg type="add" class="pe-2"></app-button-svg>
+    <div class="d-flex">
+        <app-button-svg type="delete" *ngIf="edit" (click)="deleteClicked()"></app-button-svg>
+        <app-button-svg type="edit" class="pe-2" *ngIf="edit" (click)="editClicked()"></app-button-svg>
+
+        <app-button-svg type="add" class="pe-2" *ngIf="!edit"></app-button-svg>
+    </div>
 </div>

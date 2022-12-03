@@ -1,4 +1,5 @@
 import { AfterContentChecked, ChangeDetectionStrategy, Component, ContentChildren, ElementRef, EventEmitter, HostListener, OnDestroy, OnInit, Output, QueryList, Renderer2 } from '@angular/core';
+import { ModalService } from 'src/app/services/modal.service';
 
 @Component({
   selector: 'app-modal-base',
@@ -17,7 +18,7 @@ export class ModalBaseComponent implements OnInit, OnDestroy, AfterContentChecke
 
   private body  = document.body
 
-  constructor(private _render:Renderer2) { }
+  constructor(private _modalS: ModalService, private _render:Renderer2) { }
 
   close(event?:Event) {
     if(event?.target === event?.currentTarget) {
@@ -36,10 +37,24 @@ export class ModalBaseComponent implements OnInit, OnDestroy, AfterContentChecke
   }
 
   ngOnInit(): void {
-    this._render.addClass(this.body, 'overflow-hidden')
+    this._modalS.modalOpened()
+    if(this._modalS.checkModalExistence()) {
+      this.disableBodyScroll()
+    }
   }
 
   ngOnDestroy(): void {
-    this._render.removeClass(this.body, 'overflow-hidden')
+    this._modalS.modalClosed()
+
+    if(!this._modalS.checkModalExistence()) {
+      this.enableBodyScroll()
+    }
+  }
+
+  private disableBodyScroll(): void {
+    this._render.addClass(this.body, 'overflow-hidden')
+  }
+  private enableBodyScroll(): void {
+    this._render.removeClass(this.body, 'overflow-hidden')    
   }
 }

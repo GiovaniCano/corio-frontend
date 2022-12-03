@@ -42,6 +42,10 @@ export class FormControlSelectAComponent implements ControlValueAccessor, AfterV
               .replace('{n}', requiredLength.toString())
               .replace('{n2}', actualLength.toString())
     }
+    if(this.currentError === 'max' || this.currentError === 'min') {
+      const requiredNumber:number = this.control.errors![this.currentError]['max']
+      return formErrors[this.currentError].replace('{n}', requiredNumber.toString())
+    }
 
     return formErrors[this.currentError as keyof typeof formErrors] 
   }

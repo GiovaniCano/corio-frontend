@@ -16,7 +16,13 @@ import { DishesIndexComponent } from './c/dishes/dishes-index/dishes-index.compo
 import { ItemsIndexComponent } from './c/items/items-index/items-index.component';
 import { ListsIndexComponent } from './c/lists/lists-index/lists-index.component';
 
+import { DishFormComponent } from './c/dishes/dish-form/dish-form.component';
+import { DishOwnerResolver } from './c/dishes/dish-form/dish-owner.resolver';
+
 const routes: Routes = [
+  { title: mT('Editar platillo'), path: 'dish/edit/:id', component: DishFormComponent, canActivate: [AuthGuard], resolve: { dish: DishOwnerResolver } },
+  { title: mT('Crear platillo'), path: 'dish/create', component: DishFormComponent, canActivate: [AuthGuard] },
+
   { title: mT('Listas'), path: 'lists', component: ListsIndexComponent, canActivate: [AuthGuard] },
   { title: mT('Items'), path: 'items', component: ItemsIndexComponent, canActivate: [AuthGuard] },
   { title: mT('Platillos'), path: 'dishes', component: DishesIndexComponent, canActivate: [AuthGuard] },

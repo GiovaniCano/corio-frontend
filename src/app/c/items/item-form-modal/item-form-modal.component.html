@@ -13,14 +13,10 @@
             <app-form-control-select-a
                 formControlName="measurement_type_id"
                 [control]="measurement_type_id"
-                type="select" 
                 label="Tipo" 
-                placeholder="placeholderu chan"
             >
                 <option value="0" selected disabled class="d-none">Elige un tipo de medida</option>
-                <option value="2">Peso</option>
-                <option value="3">Volumen</option>
-                <option value="1">Unidad</option>
+                <option *ngFor="let type of types$|async" value="{{type.id}}">{{ type.name }}</option>
             </app-form-control-select-a>
 
             <div class="d-flex justify-content-center">
@@ -37,7 +33,16 @@
 </app-modal-base>
 
 <!-- confirm delete modal -->
-<app-modal-base *ngIf="itemToEdit && showConfirmDeleteModal" (close)="showConfirmDeleteModal = false">
+<app-confirm-modal *ngIf="itemToEdit && showConfirmDeleteModal" 
+    [dataToReturn]="itemToEdit.id" 
+    confirmText="Eliminar"
+    confirmClasses="btn-danger"
+    (close)="showConfirmDeleteModal = false" 
+    (confirm)="deleteItem($event)"
+>¿Eliminar "{{ itemToEdit.name }}"?</app-confirm-modal>
+
+<!-- previous modal ref -->
+<!-- <app-modal-base *ngIf="itemToEdit && showConfirmDeleteModal" (close)="showConfirmDeleteModal = false">
     <div class="p-3 bg-light rounded confirm-delete-modal">
         <p class="text-center">¿Eliminar "{{ itemToEdit.name }}"?</p>
         <div class="d-flex justify-content-between">
@@ -45,4 +50,4 @@
             <button #closeModalBtn type="button" class="btn btn-danger" (click)="deleteItem(itemToEdit.id)">Eliminar</button>
         </div>
     </div>
-</app-modal-base>
+</app-modal-base> -->

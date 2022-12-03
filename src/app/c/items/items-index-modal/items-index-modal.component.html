@@ -1,0 +1,44 @@
+<app-modal-base (close)="onClose()">
+    
+    <div class="py-3 bg-light rounded item-index-modal">
+
+        <div class="px-3 mb-4 d-sm-flex justify-content-between">
+            <button (click)="showCreateItemModal = true" type="button" class="btn-create-item btn bt-light mb-3 mb-sm-0 me-sm-4 d-block text-nowrap">Crear item</button>
+            <div class="input-group">
+                <input #searchBar type="text" class="form-control" placeholder="Buscar item">
+                <span class="input-group-text">
+                    <svg xmlns="http://www.w3.org/2000/svg" width="18" height="18" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
+                        <path stroke="none" d="M0 0h24v24H0z" fill="none"/>
+                        <circle cx="10" cy="10" r="7" />
+                        <line x1="21" y1="21" x2="15" y2="15" />
+                    </svg>
+                </span>
+            </div>
+        </div>
+
+        <div class="items-container">
+            <button *ngFor="let item of filteredItems$|async" (click)="selectItem(item)" type="button" class="d-flex align-items-center flex-fill btn-no-style border px-3 {{ alreadySelected(item) ? 'text-decoration-line-through bg-dark bg-opacity-10': '' }}" [disabled]="alreadySelected(item)">
+                <svg class="me-2" xmlns="http://www.w3.org/2000/svg" fill="currentColor" viewBox="0 0 18.75 25" width="12" height="12">
+                    <path d="M11.375,23.438a7.813,7.813,0,0,1-7.812-7.812A20.474,20.474,0,0,1,6.284,6.063,12.962,12.962,0,0,1,8.947,2.681a3.909,3.909,0,0,1,2.428-1.119A3.909,3.909,0,0,1,13.8,2.681a12.962,12.962,0,0,1,2.662,3.381,20.474,20.474,0,0,1,2.722,9.563A7.812,7.812,0,0,1,11.375,23.438Zm0,1.563a9.375,9.375,0,0,0,9.375-9.375C20.75,8.884,16.063,0,11.375,0S2,8.884,2,15.625A9.375,9.375,0,0,0,11.375,25Z" transform="translate(-2)"/>
+                </svg>
+                <p class="m-0 text-start">{{ item.name }}</p>
+            </button>
+        </div>
+        
+    </div>
+
+</app-modal-base>
+
+<!-- add item modal -->
+<app-itemable-form *ngIf="showItemableFormModal" 
+    [item]="selectedItem!"
+    [units]="units"
+    (close)="showItemableFormModal = false" 
+    (itemDone)="onItemAdded($event)"
+></app-itemable-form>
+
+<!-- create item modal -->
+<app-item-form-modal *ngIf="showCreateItemModal" 
+    (close)="showCreateItemModal = false" 
+    (itemCreated)="createItem($event)" 
+></app-item-form-modal>

@@ -11,6 +11,7 @@ import { ModalBaseComponent } from './modal-base/modal-base.component';
 import { HeaderMobileComponent } from './header-mobile/header-mobile.component';
 import { LoadingSpinnerComponent } from './loading-spinner/loading-spinner.component';
 import { ButtonSvgComponent } from './button-svg.component';
+import { ConfirmModalComponent } from './confirm-modal/confirm-modal.component';
 
 
 
@@ -26,6 +27,7 @@ import { ButtonSvgComponent } from './button-svg.component';
     HeaderMobileComponent,
     LoadingSpinnerComponent,
     ButtonSvgComponent,
+    ConfirmModalComponent,
   ],
   imports: [
     CommonModule,
@@ -42,6 +44,7 @@ import { ButtonSvgComponent } from './button-svg.component';
     HeaderMobileComponent,
     LoadingSpinnerComponent,
     ButtonSvgComponent,
+    ConfirmModalComponent,
   ]
 })
 export class LayoutModule { }

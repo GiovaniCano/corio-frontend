@@ -1,0 +1,29 @@
+<app-modal-base (close)="onClose()">
+    <div class="bg-light p-3 rounded itemable-form-modal">
+        <p class="mb-3 fs-4 text-center">{{ item.name }}</p>
+        <div>
+            <form [formGroup]="form" (submit)="submit()">
+                <app-form-control-a
+                    formControlName="quantity"
+                    [control]="quantity"
+                    type="number" 
+                    label="Cantidad" 
+                    placeholder="Cantidad"></app-form-control-a>
+
+                <app-form-control-select-a
+                    formControlName="measurement_unit_id"
+                    [control]="measurement_unit_id"
+                    label="Unidad" 
+                >
+                    <option value="0" selected disabled class="d-none">Elige una unidad de medida</option>
+                    <option *ngFor="let unit of units" value="{{ unit.id }}">{{ unit.name }}</option>
+                </app-form-control-select-a>
+
+                <button type="submit" class="btn-form" [disabled]="(form.statusChanges | async) !== 'VALID'">
+                    {{ editMode ? 'Actualizar' : 'Añadir' }}
+                </button>
+            </form>
+        </div>
+    </div>
+    
+</app-modal-base>

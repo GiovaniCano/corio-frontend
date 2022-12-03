@@ -1,0 +1,28 @@
+@import 'bs-for-components';
+
+:host {
+    display: block;
+}
+
+.btn-create-item {
+    width: 100%;
+    @include media-breakpoint-up(sm) {
+        width: auto;
+    }
+}
+
+.items-container {
+    @include media-breakpoint-up(sm) {
+        display: grid;
+        grid-template-columns: repeat(2, 1fr);
+    }
+    button {        
+        width: 100%;
+        min-height: 40px;
+    }
+}
+
+.item-index-modal {
+    width: 100%;
+    max-width: 550px;
+}
