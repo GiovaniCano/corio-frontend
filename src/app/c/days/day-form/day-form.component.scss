@@ -1,0 +1,20 @@
+@import 'variables';
+
+:host {
+  display: block;
+}
+
+main {
+    width: 100%;
+    max-width: 500px;
+    box-shadow: $shadow-lg;
+}
+
+.day-section:nth-child(odd) {
+  background-color: transparentize($orange, .6);
+  box-shadow: $shadow-lg;
+}
+.day-section:nth-child(even) {
+  background-color: transparentize($redpink, .6);
+  box-shadow: $shadow-lg;
+}

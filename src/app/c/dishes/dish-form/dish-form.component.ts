@@ -86,16 +86,17 @@ export class DishFormComponent implements OnInit, OnDestroy {
       },
       error: error => {
         this.showSpinner = false
-        this._cd.detectChanges()
 
         const responseErrors:{[key:string]:string[]} = error.error?.errors
-        if(!responseErrors) return
-
-        for(let error in responseErrors) {          
-          const control = this.form.get(error)
-          control?.setErrors({serverErrorMessage: responseErrors[error][0]})
-          control?.markAsTouched()
+        if(responseErrors) {
+          for(let error in responseErrors) {          
+            const control = this.form.get(error)
+            control?.setErrors({serverErrorMessage: responseErrors[error][0]})
+            control?.markAsTouched()
+          }          
         }
+
+        this._cd.detectChanges()
       }
     })
   }

@@ -24,14 +24,15 @@
 
         <div class="d-flex align-items-center">
             <app-button-svg routerLink="/dish/edit/{{dish.id}}" type="edit" class="me-2" *ngIf="editBtn"></app-button-svg>
-            <app-button-svg type="add" class="pe-2"></app-button-svg>
+            <app-button-svg type="add" class="pe-2" *ngIf="!noAddBtn"></app-button-svg>
+            <app-button-svg type="delete" class="pe-2" *ngIf="noAddBtn" (click)="onDeleteClicked()"></app-button-svg>
         </div>
     </div>
 
     <ul class="list-unstyled collapse" id="daySection_dish-{{ (dish.pivot?.id || dish.id) }}">
         <ng-container *ngFor="let item of dish.items">
             <li class="ps-4">
-                <app-itemable-show [item]="item"></app-itemable-show>
+                <app-itemable-show [item]="item" [noAddBtn]="noAddBtn"></app-itemable-show>
             </li>
         </ng-container>
     </ul>

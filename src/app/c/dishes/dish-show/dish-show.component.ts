@@ -1,4 +1,4 @@
-import { ChangeDetectionStrategy, Component, Input, OnInit } from '@angular/core';
+import { ChangeDetectionStrategy, Component, EventEmitter, Input, Output } from '@angular/core';
 import { Dish } from 'src/app/models/Dish';
 
 @Component({
@@ -7,14 +7,16 @@ import { Dish } from 'src/app/models/Dish';
   styleUrls: ['./dish-show.component.scss'],
   changeDetection: ChangeDetectionStrategy.OnPush
 })
-export class DishShowComponent implements OnInit {
-
+export class DishShowComponent {
   @Input() dish!: Dish
   @Input() editBtn: boolean = false
+  @Input() noAddBtn: boolean = false
+
+  @Output() deleteClicked = new EventEmitter<number>()
 
   constructor() { }
 
-  ngOnInit(): void {
+  onDeleteClicked() {
+    this.deleteClicked.emit(this.dish.id)
   }
-
 }

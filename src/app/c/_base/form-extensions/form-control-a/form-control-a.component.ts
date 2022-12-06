@@ -14,6 +14,7 @@ import * as formErrors from '../form-errors.json';
 export class FormControlAComponent implements ControlValueAccessor, AfterViewInit {
   @Input() control!: AbstractControl
   @Input() formControlName!: string
+  @Input() idFor?: string
   @Input() type!: string
   @Input() label!: string
   @Input() placeholder!: string
@@ -42,7 +43,7 @@ export class FormControlAComponent implements ControlValueAccessor, AfterViewIni
               .replace('{n2}', actualLength.toString())
     }
     if(this.currentError === 'max' || this.currentError === 'min') {
-      const requiredNumber:number = this.control.errors![this.currentError]['max']
+      const requiredNumber:number = this.control.errors![this.currentError][this.currentError]
       return formErrors[this.currentError].replace('{n}', requiredNumber.toString())
     }
 
@@ -50,6 +51,10 @@ export class FormControlAComponent implements ControlValueAccessor, AfterViewIni
   }
 
   constructor(private _render: Renderer2) { }
+
+  onFocus(event: Event) {
+    (event.target as HTMLInputElement).select()
+  }
 
   ngAfterViewInit(): void {
     this._render.setProperty(this.formInput.nativeElement, 'disabled', this._disabled)

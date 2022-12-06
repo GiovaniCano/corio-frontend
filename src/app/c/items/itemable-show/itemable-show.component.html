@@ -16,6 +16,8 @@
         <app-button-svg type="delete" *ngIf="edit" (click)="deleteClicked()"></app-button-svg>
         <app-button-svg type="edit" class="pe-2" *ngIf="edit" (click)="editClicked()"></app-button-svg>
 
-        <app-button-svg type="add" class="pe-2" *ngIf="!edit"></app-button-svg>
+        <app-button-svg type="add" class="pe-2" *ngIf="!edit && !noAddBtn"></app-button-svg>
+
+        <div style="height: 40px;" class="invisible pe-4" *ngIf="noAddBtn"></div><!--fill-->
     </div>
 </div>

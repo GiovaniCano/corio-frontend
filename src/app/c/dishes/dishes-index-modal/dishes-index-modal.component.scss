@@ -1,0 +1,21 @@
+@import 'bs-for-components';
+
+:host {
+    display: block;
+}
+
+.dishes-container {
+    @include media-breakpoint-up(sm) {
+        display: grid;
+        grid-template-columns: repeat(2, 1fr);
+    }
+    button {        
+        width: 100%;
+        min-height: 40px;
+    }
+}
+
+.dish-index-modal {
+    width: 100%;
+    max-width: 550px;
+}

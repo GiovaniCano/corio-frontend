@@ -1,0 +1,55 @@
+<main class="rounded py-3 px-2 mt-2 mt-sm-5 mx-auto bg-light">
+    <h1 class="h2 text-center">{{ dayId ? 'Editar día' : 'Crear día' }}</h1>
+    <form [formGroup]="form">
+        <app-form-control-a class="mx-1"
+            formControlName="name"
+            [control]="name"
+            type="text" 
+            label="Nombre del día" 
+            placeholder="Nombre del día"></app-form-control-a>
+
+        <div class="mb-4">
+            <div class="d-flex justify-content-between align-items-center mb-3 mx-1">
+                <label class="text-center m-0">Secciones:</label>
+                <button type="button" class="btn btn-light" (click)="createSection()">Añadir sección</button>
+            </div>
+            <ul class="list-unstyled m-0" formArrayName="sectionNames">
+                <li *ngFor="let section of sections$|async; index as i" class="day-section rounded mt-4">
+                    <app-day-section-edit
+                        [section]="section" 
+                        [preloadedDishesIndex]="preloadedDishesIndex" 
+                        [preloadedItemsIndex]="preloadedItemsIndex" 
+                        [preloadedUnits]="preloadedUnits" 
+                        (deleteClicked)="deleteSection(i)" 
+                        (sectionUpdated)="updateSection($event, i)" 
+                    >
+                        <app-form-control-a class="mx-3"
+                            [formControlName]="i.toString()" 
+                            [idFor]="i.toString()" 
+                            [control]="getControl(i)" 
+                            type="text" 
+                            label="Nombre de la sección" 
+                            placeholder="Nombre de la sección"></app-form-control-a>
+                    </app-day-section-edit>
+                </li>
+            </ul>
+        </div>
+
+        <div class="d-flex justify-content-between mx-1">
+            <button *ngIf="dayId" type="button" class="btn btn-danger" (click)="showConfirmDeleteDayModal = true">Eliminar día</button>
+
+            <button type="submit" (click)="submit()" class="btn-form" [disabled]="(form.statusChanges | async) !== 'VALID'">
+                <span class="spinner-border spinner-border-sm" *ngIf="showSpinner"></span>
+                {{ dayId ? 'Actualizar día' : 'Crear día' }}
+            </button>
+        </div>
+    </form>
+</main>
+
+<!-- confirm delete day modal -->
+<app-confirm-modal *ngIf="showConfirmDeleteDayModal && dayId" 
+    confirmText="Eliminar"
+    confirmClasses="btn-danger"
+    (close)="showConfirmDeleteDayModal = false" 
+    (confirm)="deleteDay()"
+>¿Eliminar "{{ dayName }}"?</app-confirm-modal>

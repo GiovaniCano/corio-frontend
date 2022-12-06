@@ -1,0 +1,27 @@
+<app-modal-base (close)="onClose()">
+    
+    <div class="py-3 bg-light rounded dish-index-modal">
+
+        <div class="input-group px-3 mb-3">
+            <input #searchBar type="text" class="form-control" placeholder="Buscar platillo">
+            <span class="input-group-text">
+                <svg xmlns="http://www.w3.org/2000/svg" width="18" height="18" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
+                    <path stroke="none" d="M0 0h24v24H0z" fill="none"/>
+                    <circle cx="10" cy="10" r="7" />
+                    <line x1="21" y1="21" x2="15" y2="15" />
+                </svg>
+            </span>
+        </div>
+
+        <div class="dishes-container">
+            <button *ngFor="let dish of filteredDishes$|async" (click)="selectDish(dish)" type="button" class="d-flex align-items-center flex-fill btn-no-style border px-3 {{ alreadySelected(dish) ? 'text-decoration-line-through bg-dark bg-opacity-10': '' }}" [disabled]="alreadySelected(dish)">
+                <svg class="me-2" xmlns="http://www.w3.org/2000/svg" fill="currentColor" viewBox="0 0 25 25" width="13" height="13">
+                    <path d="M18.25,14.5a2.5,2.5,0,1,0,2.5,2.5,2.491,2.491,0,0,0-2.5-2.5m-3.75,11c-5.523,0-11-5.477-11-11s5.473-11,11-11,11,5.477,11,11-5.482,11-11,11M14.5,2A12.5,12.5,0,1,0,27,14.5,12.5,12.5,0,0,0,14.5,2M17,10.75a2.5,2.5,0,1,0-2.5,2.5,2.5,2.5,0,0,0,2.5-2.5M10.75,14.5a2.5,2.5,0,1,0,2.5,2.5A2.5,2.5,0,0,0,10.75,14.5Z" transform="translate(-2 -2)"/>
+                </svg>
+                <p class="m-0 text-start">{{ dish.name }}</p>
+            </button>
+        </div>
+        
+    </div>
+
+</app-modal-base>

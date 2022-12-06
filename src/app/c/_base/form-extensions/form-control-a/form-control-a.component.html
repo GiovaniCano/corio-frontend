@@ -1,14 +1,16 @@
 <div class="mb-4">
-    <label for="{{formControlName}}" class="form-label">{{label}}</label>
+    <label for="{{idFor || formControlName}}" class="form-label">{{label}}</label>
 
-    <input id="{{formControlName}}" #formInput
+    <input id="{{idFor || formControlName}}" #formInput
         (input)="input($event)" 
         (blur)="blur($event)" 
+        (focus)="onFocus($event)"
         [type]="type" 
         [value]="value" 
         [placeholder]="placeholder" 
         class="form-control" 
-        [class.is-invalid]="isInvalid"
+        [class.is-invalid]="isInvalid" 
+        [attr.min]="type === 'number' ? 0 : null"
     >
 
     <div *ngIf="isInvalid" class="invalid-feedback arial">{{ errorMessage }}</div>

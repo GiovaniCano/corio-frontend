@@ -1,8 +1,9 @@
-import { DaySection } from "./DaySection"
+import { DaySection, DaySection_Post } from "./DaySection"
 
 export class Day_Post {
-    constructor(public name: string ) {
+    constructor(public name: string, public sections: DaySection_Post[]) {
         this.name = name
+        this.sections = sections
     }
 }
 

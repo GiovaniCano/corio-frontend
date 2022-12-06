@@ -10,6 +10,7 @@ import { Item } from 'src/app/models/Item';
 export class ItemableShowComponent {
   @Input() item!: Item
   @Input() edit: boolean = false
+  @Input() noAddBtn: boolean = false
 
   @Output() editClick = new EventEmitter<void>()
   @Output() deleteClick = new EventEmitter<void>()

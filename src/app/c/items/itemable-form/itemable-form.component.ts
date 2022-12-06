@@ -20,7 +20,7 @@ export class ItemableFormComponent implements OnInit {
   @Output() itemDone = new EventEmitter<Item>()
 
   form = new FormGroup({
-    quantity: new FormControl(),
+    quantity: new FormControl('', [Validators.required, Validators.min(0), Validators.max(999999.99)]),
     measurement_unit_id: new FormControl(0, requiredSelect(0))
   })
 
@@ -32,7 +32,7 @@ export class ItemableFormComponent implements OnInit {
   constructor(private _toastS: ToastService) { }
 
   submit() {
-    const quantity = this.quantity.value
+    const quantity = parseFloat(this.quantity.value ?? '')
     const measurement_unit = this.units.find(({id}) => id == this.measurement_unit_id.value)!
     const itemable = new Itemable(quantity, measurement_unit)
     this.item = {...this.item, pivot: itemable}
@@ -46,14 +46,12 @@ export class ItemableFormComponent implements OnInit {
   }
 
   ngOnInit(): void {
-    this.quantity.setValidators([Validators.required, Validators.max(999999.99)]) // done here to keep empty the input
-
     this.units = this.units.filter(unit => unit.measurement_type_id == this.item.measurement_type_id)
 
     this.editMode = !!this.item.pivot
     if(this.editMode) {
       this.measurement_unit_id.setValue(this.item.pivot!.measurement_unit.id)
-      this.quantity.setValue(this.item.pivot!.quantity)
+      this.quantity.setValue(this.item.pivot!.quantity.toString())
     }
   }
 
