@@ -5,7 +5,7 @@ import { environment } from 'src/environments/environment';
 import { Day, Day_Post } from '../models/Day';
 import { Dish, Dish_Post } from '../models/Dish';
 import { Item, Item_Post } from '../models/Item';
-import { List } from '../models/List';
+import { List, List_Post } from '../models/List';
 import { MeasurementType } from '../models/MeasurementType';
 import { MeasurementUnit } from '../models/MeasurementUnit';
 
@@ -15,6 +15,28 @@ import { MeasurementUnit } from '../models/MeasurementUnit';
 export class AppService {
 
   constructor(private _http: HttpClient) { }
+
+  /* LISTS */
+  list_store(body: List_Post): Observable<any> { 
+    const url = this.url('listt')
+    return this._http.post<any>(url, body)
+  }
+  list_update(id:number, body: List_Post): Observable<any> {
+    const url = this.url('listt/' + id)
+    return this._http.put<any>(url, body)
+  }
+  list_delete(id: number): Observable<null> {
+    const url = this.url('listt/' + id)
+    return this._http.delete<null>(url)
+  }
+  list_show(id: number): Observable<List> {
+    const url = this.url('listt/'+id)
+    return this._http.get<List>(url)
+  }
+  list_index(): Observable<List[]> {
+    const url = this.url('listt')
+    return this._http.get<List[]>(url)
+  }
 
   /* DAYS */
   day_store(body: Day_Post): Observable<any> { 
@@ -79,10 +101,6 @@ export class AppService {
   }
 
   /* INDEX */
-  list_index(): Observable<List[]> {
-    const url = this.url('list')
-    return this._http.get<List[]>(url)
-  }
   measurementUnit_index(): Observable<MeasurementUnit[]> {
     const url = this.url('measurement-unit')
     return this._http.get<MeasurementUnit[]>(url)

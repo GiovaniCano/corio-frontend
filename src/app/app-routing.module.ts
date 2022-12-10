@@ -20,8 +20,13 @@ import { DishFormComponent } from './c/dishes/dish-form/dish-form.component';
 import { DishOwnerResolver } from './c/dishes/dish-form/dish-owner.resolver';
 import { DayFormComponent } from './c/days/day-form/day-form.component';
 import { DayOwnerResolver } from './c/days/day-form/day-owner.resolver';
+import { ListFormComponent } from './c/lists/list-form/list-form.component';
+import { ListOwnerResolver } from './c/lists/list-form/list-owner.resolver';
 
 const routes: Routes = [
+  { title: mT('Editar Lista'), path: 'list/edit/:id', component: ListFormComponent, canActivate: [AuthGuard], resolve: { list: ListOwnerResolver } },
+  { title: mT('Crear Lista'), path: 'list/create', component: ListFormComponent, canActivate: [AuthGuard] },
+
   { title: mT('Editar día'), path: 'day/edit/:id', component: DayFormComponent, canActivate: [AuthGuard], resolve: { day: DayOwnerResolver } },
   { title: mT('Crear día'), path: 'day/create', component: DayFormComponent, canActivate: [AuthGuard] },
 

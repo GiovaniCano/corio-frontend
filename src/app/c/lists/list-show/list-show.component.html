@@ -1,7 +1,7 @@
 <div class="list-show bg-light pb-2">
     <div class="list-header pt-2 pb-1 mb-2 px-3 d-flex justify-content-between align-items-center">
         <h3 class="h6 m-0">{{ list.name }}</h3>
-        <app-button-svg type="edit"></app-button-svg>
+        <app-button-svg type="edit" routerLink="/list/edit/{{list.id}}"></app-button-svg>
     </div>
     <div class="list-body">
         <ng-container *ngFor="let item of list.items">

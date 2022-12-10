@@ -1,6 +1,7 @@
 import { MeasurementUnit } from "./MeasurementUnit"
 
 export class Itemable_Post {
+    trail?: string
     constructor(public item_id: number, public quantity: number, public measurement_unit_id: number) {
         this.item_id = item_id
         this.quantity = quantity
@@ -13,6 +14,7 @@ export class Itemable {
     measurement_unit: MeasurementUnit
 
     id: number = 0
+    ngId?: number
     itemable_id: number = 0
     itemable_type: string = ''
     item_id: number = 0

@@ -33,6 +33,7 @@
 <app-itemable-form *ngIf="showItemableFormModal" 
     [item]="selectedItem!"
     [units]="units"
+    [trail]="trail"
     (close)="showItemableFormModal = false" 
     (itemDone)="onItemAdded($event)"
 ></app-itemable-form>

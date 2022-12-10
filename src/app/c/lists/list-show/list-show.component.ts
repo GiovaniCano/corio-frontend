@@ -1,4 +1,4 @@
-import { ChangeDetectionStrategy, Component, Input, OnInit } from '@angular/core';
+import { ChangeDetectionStrategy, Component, Input } from '@angular/core';
 import { List } from 'src/app/models/List';
 
 @Component({
@@ -7,13 +7,9 @@ import { List } from 'src/app/models/List';
   styleUrls: ['./list-show.component.scss'],
   changeDetection: ChangeDetectionStrategy.OnPush
 })
-export class ListShowComponent implements OnInit {
+export class ListShowComponent {
   @Input() list!: List
   @Input() showTrails!: boolean
 
   constructor() { }
-
-  ngOnInit(): void {
-  }
-
 }

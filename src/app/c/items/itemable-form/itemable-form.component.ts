@@ -3,6 +3,7 @@ import { FormControl, FormGroup, Validators } from '@angular/forms';
 import { Item } from 'src/app/models/Item';
 import { Itemable } from 'src/app/models/Itemable';
 import { MeasurementUnit } from 'src/app/models/MeasurementUnit';
+import { AutoIncrementService } from 'src/app/services/auto-increment.service';
 import { ToastService } from 'src/app/services/toast.service';
 import { requiredSelect } from '../../_base/form-extensions/validators';
 
@@ -15,6 +16,8 @@ import { requiredSelect } from '../../_base/form-extensions/validators';
 export class ItemableFormComponent implements OnInit {
   @Input() item!: Item
   @Input() units!: MeasurementUnit[]
+
+  @Input() trail?: string
 
   @Output() close = new EventEmitter<void>()
   @Output() itemDone = new EventEmitter<Item>()
@@ -29,12 +32,28 @@ export class ItemableFormComponent implements OnInit {
 
   editMode!:boolean
 
-  constructor(private _toastS: ToastService) { }
+  constructor(private _toastS: ToastService, private _autoIncrementS: AutoIncrementService) { }
 
   submit() {
-    const quantity = parseFloat(this.quantity.value ?? '')
-    const measurement_unit = this.units.find(({id}) => id == this.measurement_unit_id.value)!
+    const quantity: number = parseFloat(this.quantity.value ?? '')
+    const measurement_unit: MeasurementUnit = this.units.find(({id}) => id == this.measurement_unit_id.value)!
     const itemable = new Itemable(quantity, measurement_unit)
+
+    const pivot = this.item.pivot
+    if(pivot) {
+      // update
+      if(pivot.id) {
+        itemable.id = pivot.id
+      } else {
+        itemable.ngId = pivot.ngId
+      }      
+      if(pivot.trail) itemable.trail = pivot.trail
+    } else {
+      // create
+      itemable.ngId = this._autoIncrementS.getId()
+      if(this.trail) itemable.trail = {itemable_id:0, trail:this.trail}
+    }
+
     this.item = {...this.item, pivot: itemable}
 
     this.itemDone.emit(this.item)

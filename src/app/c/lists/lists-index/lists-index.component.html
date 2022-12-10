@@ -1,7 +1,7 @@
 <header class="py-0 pb-3 py-sm-4 d-flex flex-column flex-sm-row justify-content-between">
     <div class=" d-flex justify-content-between align-items-center">
         <h1 class="h2 m-0 me-3">Listas</h1>
-        <button class="btn btn-light d-sm-none">Crear lista</button>
+        <a routerLink="/list/create" class="btn btn-light d-sm-none">Crear lista</a>
     </div>
 
     <div class="page-actions d-flex">        
@@ -17,7 +17,7 @@
             <button class="btn btn-light" (click)="showListsModal = true">Mostrar listas</button>
         </div>
         
-        <button class="btn btn-light d-none d-sm-block ms-3">Crear lista</button>
+        <a routerLink="/list/create" class="btn btn-light d-none d-sm-block ms-3">Crear lista</a>
     </div>
 </header>
 

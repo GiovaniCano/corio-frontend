@@ -10,7 +10,7 @@ export const debugObs = () => tap({
     // complete: () => console.log('complete')
 })
 
-export const sortObjectsArray = (array: any[], propertyToSort: string = 'name') => {
+export const sortObjectsArray = (array: any[], propertyToSort: string = 'name'): any[] => {
     return array.sort(function (a, b) {
         a = a[propertyToSort]
         b = b[propertyToSort]

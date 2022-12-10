@@ -12,8 +12,10 @@ import { MeasurementUnit } from 'src/app/models/MeasurementUnit';
 })
 export class ItemsIndexModalComponent implements OnInit, AfterViewInit {
   @Input() initialItems!: Item[]
-  @Input() currentItems!: Item[]
+  @Input() currentItems?: Item[]
   @Input() units!: MeasurementUnit[]
+
+  @Input() trail?: string
 
   @Output() close = new EventEmitter<void>()
   @Output() itemAdded = new EventEmitter<Item>()
@@ -51,6 +53,7 @@ export class ItemsIndexModalComponent implements OnInit, AfterViewInit {
   }
 
   alreadySelected(item: Item) {
+    if(!this.currentItems) return false
     const currentItems = this.currentItems.map(item => item.id)
     return currentItems.includes(item.id)
   }

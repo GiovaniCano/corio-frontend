@@ -31,6 +31,7 @@ import { ItemableFormComponent } from './c/items/itemable-form/itemable-form.com
 import { DayFormComponent } from './c/days/day-form/day-form.component';
 import { DaySectionEditComponent } from './c/days/day-section-edit/day-section-edit.component';
 import { DishesIndexModalComponent } from './c/dishes/dishes-index-modal/dishes-index-modal.component';
+import { ListFormComponent } from './c/lists/list-form/list-form.component';
 
 
 @NgModule({
@@ -56,6 +57,7 @@ import { DishesIndexModalComponent } from './c/dishes/dishes-index-modal/dishes-
       DayFormComponent,
       DaySectionEditComponent,
       DishesIndexModalComponent,
+      ListFormComponent,
   ],
   imports: [
     BrowserModule,

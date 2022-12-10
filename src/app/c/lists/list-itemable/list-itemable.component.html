@@ -5,19 +5,25 @@
         </svg>
 
         <!-- item -->
-        <div class="d-flex justify-content-between align-items-center flex-fill" *ngIf="!Array.isArray(item)">
-            <p class="m-0">{{ item.name }}</p>
-            <span class="ms-2 text-nowrap">
-                {{ item.pivot?.quantity }} 
-                {{ getUnitAbbreviationOrName(item) }}
-            </span>
-        </div>
+        <ng-container *ngIf="!Array.isArray(item)">
+            <div class="d-flex justify-content-between align-items-center flex-fill">
+                <p class="m-0">{{ item.name }}</p>
+                <span class="ms-2 text-nowrap">
+                    {{ item.pivot?.quantity }}
+                    {{ getUnitAbbreviationOrName(item) }}
+                </span>
+            </div>
+            <ng-container *ngIf="edit">
+                <app-button-svg (click)="onClickDelete(item)" type="delete" class="ms-1"></app-button-svg>
+                <app-button-svg (click)="onClickEdit(item)" type="edit" class="ms-1"></app-button-svg>
+            </ng-container>
+        </ng-container>
         <!-- array -->
-        <div class="d-flex justify-content-between align-items-center flex-fill" *ngIf="Array.isArray(item)">
+        <div class="d-flex justify-content-between align-items-center flex-fill" [class.mt-2]="showTrails && edit" *ngIf="Array.isArray(item)">
             <p class="m-0">{{ item[0].name }}</p>
             <span class="ms-2 text-nowrap">
-                {{ total(item)}} 
-                {{ getUnitAbbreviationOrName(item[0]) }}
+                {{ transformTotalToConvenientUnit(total(item), item[0]) }} 
+                {{ getUnitAbbreviationOrName(item[0], total(item)) }}
             </span>
         </div>
     </div>
@@ -26,13 +32,19 @@
         <!-- item -->
         <small *ngIf="!Array.isArray(item)" class="ms-3">{{ item.pivot?.trail?.trail }}</small>
         <!-- array -->
-        <ul *ngIf="Array.isArray(item)" class="list-unstyled m-0">
-            <li *ngFor="let single_item of item" class="d-flex justify-content-between align-items-center mb-1">
-                <small class="ms-4">{{ single_item.pivot?.trail?.trail }}</small>
-                <small class="ms-2 text-nowrap">
-                    {{ single_item.pivot?.quantity }} 
-                    {{ getUnitAbbreviationOrName(single_item) }}
-                </small>
+        <ul *ngIf="Array.isArray(item)" class="list-unstyled m-0 mt-1">
+            <li *ngFor="let single_item of item" class="d-flex align-items-center justify-content-between mb-1">
+                <div class="d-flex justify-content-between align-items-center w-100">
+                    <small class="ms-4">{{ single_item.pivot?.trail?.trail }}</small>
+                    <small class="ms-2 text-nowrap">
+                        {{ single_item.pivot?.quantity }}
+                        {{ getUnitAbbreviationOrName(single_item) }}
+                    </small>
+                </div>
+                <div *ngIf="edit" class="d-flex">
+                    <app-button-svg (click)="onClickDelete(single_item)" type="delete" class="ms-1"></app-button-svg>
+                    <app-button-svg (click)="onClickEdit(single_item)" type="edit" class="ms-1"></app-button-svg>
+                </div>
             </li>
         </ul>
     </ng-container>
