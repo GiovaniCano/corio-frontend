@@ -7,8 +7,9 @@ export class Day_Post {
     }
 }
 
-export interface Day extends Day_Post {
+export interface Day {
     id: number
+    name: string
     user_id: number
     created_at: string
     updated_at: string

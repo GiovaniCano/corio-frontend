@@ -1,0 +1,12 @@
+:host {
+  display: block;
+}
+
+.select-modal, .newlist-modal {
+  width: 100%;
+  max-width: 350px;
+}
+
+li:not(:last-of-type) {
+  margin-bottom: 1.25rem;
+}

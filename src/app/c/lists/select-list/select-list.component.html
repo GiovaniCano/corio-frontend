@@ -1,0 +1,32 @@
+<app-modal-base (close)="onclose()">
+    <div class="bg-light rounded select-modal">
+        <h5 class="text-center mb-0 p-3 border-bottom border-2">Añadir items a una lista</h5>
+        <ul class="list-unstyled p-3">
+            <li *ngFor="let list of lists$|async" class="border-0">
+                <button #closeModalBtn type="button" class="btn btn-primary d-block w-100" (click)="onListSelected(list.id)">{{ list.name }}</button>
+            </li>
+        </ul>
+        <div class="border-top p-3 border-2">
+            <button type="btn" class="btn btn-light d-block ms-auto" (click)="showCreateListModal = true">Crear nueva lista</button>
+        </div>
+    </div>
+
+    <app-modal-base *ngIf="showCreateListModal" (close)="showCreateListModal = false">
+        <div class="bg-light rounded newlist-modal p-3">
+            <h5 class="text-center mb-3">Crea una nueva lista</h5>
+            <form [formGroup]="form">
+                <app-form-control-a
+                    formControlName="name"
+                    [control]="name"
+                    type="text" 
+                    label="Nombre" 
+                    placeholder="Nombre de la lista"></app-form-control-a>    
+                
+                <button type="submit" (click)="createList()" class="btn-form" [disabled]="(form.statusChanges | async) !== 'VALID'">
+                    <span class="spinner-border spinner-border-sm" *ngIf="showSpinner"></span>
+                    Crear
+                </button>
+            </form>
+        </div>
+    </app-modal-base>
+</app-modal-base>

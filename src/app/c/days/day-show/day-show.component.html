@@ -3,14 +3,16 @@
         <h3 class="h6 m-0 fw-bold">{{day.name}}</h3>
         <div class="d-flex">
             <app-button-svg routerLink="/day/edit/{{day.id}}" type="edit" class="me-3"></app-button-svg>
-            <app-button-svg type="add"></app-button-svg>
+            <app-button-svg type="add" (click)="showSelectList = true"></app-button-svg>
         </div>
     </div>
     <ul class="day-sections list-unstyled m-0">
         <ng-container *ngFor="let daySection of day.day_sections">
             <li class="day-section-show">
-                <app-day-section-show [daySection]="daySection"></app-day-section-show>
+                <app-day-section-show [daySection]="daySection" [trail]="day.name"></app-day-section-show>
             </li>
         </ng-container>
     </ul>
 </div>
+
+<app-select-list *ngIf="showSelectList" (close)="showSelectList = false" (listSelected)="addItemsToList($event)"></app-select-list>

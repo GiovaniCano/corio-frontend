@@ -1,7 +1,7 @@
 import { ChangeDetectionStrategy, ChangeDetectorRef, Component, OnDestroy, OnInit } from '@angular/core';
 import { FormControl, FormGroup, Validators } from '@angular/forms';
 import { ActivatedRoute, Router } from '@angular/router';
-import { BehaviorSubject, map, Observable, Subscription, take } from 'rxjs';
+import { BehaviorSubject, map, Observable, Subscription, take, tap } from 'rxjs';
 import { sortObjectsArray } from 'src/app/helpers';
 import { Item } from 'src/app/models/Item';
 import { Itemable_Post } from 'src/app/models/Itemable';
@@ -9,6 +9,7 @@ import { List, List_Post } from 'src/app/models/List';
 import { MeasurementUnit } from 'src/app/models/MeasurementUnit';
 import { AppService } from 'src/app/services/app.service';
 import { ToastService } from 'src/app/services/toast.service';
+import { SelectListService } from 'src/app/services/select-list.service';
 
 @Component({
   selector: 'app-list-form',
@@ -54,7 +55,8 @@ export class ListFormComponent implements OnInit, OnDestroy {
     private _appS: AppService, 
     private _router: Router, 
     private _toastS: ToastService, 
-    private _cd: ChangeDetectorRef
+    private _cd: ChangeDetectorRef,
+    private _selectListS: SelectListService
   ) { }
 
   submit() {
@@ -74,18 +76,18 @@ export class ListFormComponent implements OnInit, OnDestroy {
 
     let action: Observable<any>
     if(this.listId) {
-      action = this._appS.list_update(this.listId, data)
+      action = this._appS.list_update(this.listId, data).pipe(tap(list => this._selectListS.updateList(list)))
     } else {
-      action = this._appS.list_store(data)
+      action = this._appS.list_store(data).pipe(tap(list => this._selectListS.addList(list)))
     }
 
     this.actionSubs = action.subscribe({
       next: () => {
-        this._router.navigate(['/lists'])
         this._toastS.createToast({
           message: this.listId ? 'Lista actualizada' : 'Lista creada',
           type: 'success'
         })
+        this._router.navigate(['/lists'])
       },
       error: error => {
         this.showSpinner = false
@@ -107,11 +109,14 @@ export class ListFormComponent implements OnInit, OnDestroy {
   deleteList() {
     const id = this.listId!
     this.deleteListSubs = this._appS.list_delete(id).subscribe(() => {
-      this._router.navigate(['/lists'])
+      this._selectListS.removeList(id)
+
       this._toastS.createToast({
         message: 'Lista eliminada',
         type: 'success'
       })
+
+      this._router.navigate(['/lists'])
     })
   }
 

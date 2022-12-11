@@ -24,6 +24,7 @@
                         [item]="item" 
                         (itemUpdated)="updateItem($event)" 
                         (itemDeleted)="deleteItem($event)"
+                        (addClick)="createItemable($event)"
                         class="item-show rounded bg-light"
                     ></app-item-show>
                 </div>
@@ -44,6 +45,20 @@
     (close)="showCreateItemModal = false" 
     (itemCreated)="createItem($event)" 
 ></app-item-form-modal>
+
+
+<!-- create itemable modal -->
+<app-itemable-form *ngIf="showCreateItemableModal && units" 
+    [item]="itemtoCreateItemable!"
+    [units]="units"
+    [disableToast]="true"
+    (close)="showCreateItemableModal = false" 
+    (itemDone)="selectListToAddItemable($event)"
+></app-itemable-form>
+<!-- add to list modal / selectlist modal -->
+<app-select-list *ngIf="showSelectList" (close)="showSelectList = false" (listSelected)="addItemToList($event)"></app-select-list>
+
+
 
 <!-- units modal -->
 <app-modal-base *ngIf="showUnitsModal" (close)="showUnitsModal = false">

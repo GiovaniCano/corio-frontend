@@ -32,6 +32,7 @@ import { DayFormComponent } from './c/days/day-form/day-form.component';
 import { DaySectionEditComponent } from './c/days/day-section-edit/day-section-edit.component';
 import { DishesIndexModalComponent } from './c/dishes/dishes-index-modal/dishes-index-modal.component';
 import { ListFormComponent } from './c/lists/list-form/list-form.component';
+import { SelectListComponent } from './c/lists/select-list/select-list.component';
 
 
 @NgModule({
@@ -58,6 +59,7 @@ import { ListFormComponent } from './c/lists/list-form/list-form.component';
       DaySectionEditComponent,
       DishesIndexModalComponent,
       ListFormComponent,
+      SelectListComponent,
   ],
   imports: [
     BrowserModule,

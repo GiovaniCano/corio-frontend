@@ -1,6 +1,8 @@
 import { Component, ChangeDetectionStrategy, OnInit } from '@angular/core';
 import { NavigationStart, Router } from '@angular/router';
 import { Observable, share } from 'rxjs';
+import { SelectListService } from './services/select-list.service';
+import { AppService } from './services/app.service';
 import { AuthService } from './services/auth.service';
 import { LoadingSpinnerService } from './services/loading-spinner.service';
 import { MobileMenuService } from './services/mobile-menu.service';
@@ -23,6 +25,8 @@ export class AppComponent implements OnInit {
     private _mobileMenuS: MobileMenuService, 
     private _router: Router,
     private _loadingSpinnerS: LoadingSpinnerService,
+    private _appS: AppService,
+    private _selectListS: SelectListService
   ) { }
 
   ngOnInit(): void {
@@ -35,5 +39,8 @@ export class AppComponent implements OnInit {
         this._mobileMenuS.hide()
       }
     })
+
+    /* select list */
+    this._appS.list_indexlite().subscribe(lists => this._selectListS.pushLists(lists))
   }
 }

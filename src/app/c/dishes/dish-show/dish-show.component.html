@@ -1,5 +1,4 @@
 <div class="w-100">
-
     
     <div class="dish-header d-flex justify-content-between align-items-stretch">
 
@@ -24,7 +23,7 @@
 
         <div class="d-flex align-items-center">
             <app-button-svg routerLink="/dish/edit/{{dish.id}}" type="edit" class="me-2" *ngIf="editBtn"></app-button-svg>
-            <app-button-svg type="add" class="pe-2" *ngIf="!noAddBtn"></app-button-svg>
+            <app-button-svg type="add" class="pe-2" *ngIf="!noAddBtn" (click)="showSelectList = true"></app-button-svg>
             <app-button-svg type="delete" class="pe-2" *ngIf="noAddBtn" (click)="onDeleteClicked()"></app-button-svg>
         </div>
     </div>
@@ -32,10 +31,11 @@
     <ul class="list-unstyled collapse" id="daySection_dish-{{ (dish.pivot?.id || dish.id) }}">
         <ng-container *ngFor="let item of dish.items">
             <li class="ps-4">
-                <app-itemable-show [item]="item" [noAddBtn]="noAddBtn"></app-itemable-show>
+                <app-itemable-show [item]="item" [noAddBtn]="noAddBtn" [trail]="trail ? trail+' / '+dish.name : dish.name"></app-itemable-show>
             </li>
         </ng-container>
     </ul>
 
-
 </div>
+
+<app-select-list *ngIf="showSelectList" (close)="showSelectList = false" (listSelected)="addItemsToList($event)"></app-select-list>

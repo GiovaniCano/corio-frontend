@@ -14,18 +14,20 @@
         <h4 class="h6 m-0 ms-1">{{ daySection.name }}</h4>
     </button>
 
-    <app-button-svg type="add" class="pe-2"></app-button-svg>
+    <app-button-svg type="add" class="pe-2" (click)="showSelectList = true"></app-button-svg>
 </div>
 
 <ul class="list-unstyled collapse show" id="daySection-{{ daySection.id }}">
     <ng-container *ngFor="let dish of daySection.dishes">
         <li>
-            <app-dish-show [dish]="dish"></app-dish-show>
+            <app-dish-show [dish]="dish" [trail]="trail+' / '+daySection.name"></app-dish-show>
         </li>
     </ng-container>
     <ng-container *ngFor="let item of daySection.items">
         <li>
-            <app-itemable-show [item]="item"></app-itemable-show>
+            <app-itemable-show [item]="item" [trail]="trail+' / '+daySection.name"></app-itemable-show>
         </li>
     </ng-container>
 </ul>
+
+<app-select-list *ngIf="showSelectList" (close)="showSelectList = false" (listSelected)="addItemsToList($event)"></app-select-list>

@@ -18,6 +18,7 @@ export class ItemableFormComponent implements OnInit {
   @Input() units!: MeasurementUnit[]
 
   @Input() trail?: string
+  @Input() disableToast?: boolean = false
 
   @Output() close = new EventEmitter<void>()
   @Output() itemDone = new EventEmitter<Item>()
@@ -58,10 +59,12 @@ export class ItemableFormComponent implements OnInit {
 
     this.itemDone.emit(this.item)
 
-    this._toastS.createToast({
-      message: this.editMode ? 'Item actualizado' : 'Item añadido',
-      type: 'success'
-    })
+    if(!this.disableToast && !this.editMode) {
+      this._toastS.createToast({
+        message: 'Item añadido',
+        type: 'success'
+      })
+    }
   }
 
   ngOnInit(): void {

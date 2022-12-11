@@ -13,10 +13,15 @@ export class ItemShowComponent {
 
   @Output() itemUpdated = new EventEmitter<Item>()
   @Output() itemDeleted = new EventEmitter<number>()
+  @Output() addClick = new EventEmitter<Item>()
 
   showEditItemModal: boolean = false
 
   constructor() { }
+
+  onAddClick() {
+    this.addClick.emit(this.item)
+  }
 
   updateItem(updatedItem: Item) {
     this.itemUpdated.emit(updatedItem)

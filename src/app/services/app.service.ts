@@ -5,7 +5,8 @@ import { environment } from 'src/environments/environment';
 import { Day, Day_Post } from '../models/Day';
 import { Dish, Dish_Post } from '../models/Dish';
 import { Item, Item_Post } from '../models/Item';
-import { List, List_Post } from '../models/List';
+import { Itemable_Post } from '../models/Itemable';
+import { List, ListLite, List_Post } from '../models/List';
 import { MeasurementType } from '../models/MeasurementType';
 import { MeasurementUnit } from '../models/MeasurementUnit';
 
@@ -17,13 +18,13 @@ export class AppService {
   constructor(private _http: HttpClient) { }
 
   /* LISTS */
-  list_store(body: List_Post): Observable<any> { 
+  list_store(body: List_Post): Observable<ListLite> {
     const url = this.url('listt')
-    return this._http.post<any>(url, body)
+    return this._http.post<ListLite>(url, body)
   }
-  list_update(id:number, body: List_Post): Observable<any> {
+  list_update(id:number, body: List_Post): Observable<ListLite> {
     const url = this.url('listt/' + id)
-    return this._http.put<any>(url, body)
+    return this._http.put<ListLite>(url, body)
   }
   list_delete(id: number): Observable<null> {
     const url = this.url('listt/' + id)
@@ -36,6 +37,14 @@ export class AppService {
   list_index(): Observable<List[]> {
     const url = this.url('listt')
     return this._http.get<List[]>(url)
+  }
+  list_indexlite(): Observable<ListLite[]> {
+    const url = this.url('listt-lite')
+    return this._http.get<ListLite[]>(url)
+  }
+  list_addItems(listId: number, items: Itemable_Post[]): Observable<null> {
+    const url = this.url(`listt/${listId}/add-item`)
+    return this._http.post<null>(url, {items: items})
   }
 
   /* DAYS */

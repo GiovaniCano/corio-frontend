@@ -1,10 +1,11 @@
 import { ChangeDetectionStrategy, Component, OnDestroy, OnInit } from '@angular/core';
 import { BehaviorSubject, Subscription, tap } from 'rxjs';
-import { sortObjectsArray } from 'src/app/helpers';
+import { makeItemablePostFromItem, sortObjectsArray } from 'src/app/helpers';
 import { Item } from 'src/app/models/Item';
 import { MeasurementUnit } from 'src/app/models/MeasurementUnit';
 import { AppService } from 'src/app/services/app.service';
 import { LoadingSpinnerService } from 'src/app/services/loading-spinner.service';
+import { ToastService } from 'src/app/services/toast.service';
 
 @Component({
   selector: 'app-items-index',
@@ -21,11 +22,44 @@ export class ItemsIndexComponent implements OnInit, OnDestroy {
   showUnitsModal: boolean = false
   showCreateItemModal: boolean = false
 
-  unitsSubs!: Subscription
-  itemsSubs!: Subscription
+  showSelectList: boolean = false
+  showCreateItemableModal: boolean = false
 
-  constructor(private _appS: AppService, private _loadingS: LoadingSpinnerService) {
+  itemtoCreateItemable?: Item
+  private itemableToAddToList?: Item
+
+  private unitsSubs!: Subscription
+  private itemsSubs!: Subscription
+  private addItemSubs?: Subscription
+
+  constructor(
+    private _appS: AppService, 
+    private _loadingS: LoadingSpinnerService,
+    private _toastS: ToastService
+  ) {
     this._loadingS.show()
+  }
+
+  createItemable(item: Item) {
+    this.itemtoCreateItemable = item
+    this.showCreateItemableModal = true
+  }
+  selectListToAddItemable(item: Item) {
+    this.showCreateItemableModal = false
+    this.itemableToAddToList = item
+    this.showSelectList = true
+  }
+  addItemToList(listId: number) {
+    this.addItemSubs = this._appS.list_addItems(listId, [makeItemablePostFromItem(this.itemableToAddToList!, 'Items')]).subscribe({
+      next: () => this._toastS.createToast({
+        message: 'Item añadido',
+        type: 'success'
+      }),
+      error: () => this._toastS.createToast({
+        message: 'Hubo un error al añadir a la lista',
+        type: 'danger'
+      }),
+    })
   }
 
   ngOnInit(): void {
@@ -36,6 +70,7 @@ export class ItemsIndexComponent implements OnInit, OnDestroy {
   ngOnDestroy(): void {
     this.unitsSubs.unsubscribe()
     this.itemsSubs.unsubscribe()
+    this.addItemSubs?.unsubscribe()
   }
 
   createItem(item: Item) {

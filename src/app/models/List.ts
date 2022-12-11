@@ -17,3 +17,5 @@ export interface List {
 
     items: Item[]
 }
+
+export type ListLite = {id: number, name: string}
