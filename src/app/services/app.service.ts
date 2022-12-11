@@ -109,7 +109,7 @@ export class AppService {
     return this._http.get<Item[]>(url)
   }
 
-  /* INDEX */
+  /* UNITS ANS TYPES */
   measurementUnit_index(): Observable<MeasurementUnit[]> {
     const url = this.url('measurement-unit')
     return this._http.get<MeasurementUnit[]>(url)

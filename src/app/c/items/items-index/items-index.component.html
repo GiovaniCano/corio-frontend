@@ -1,16 +1,18 @@
 <header class="py-0 pb-3 py-sm-4 d-flex justify-content-between align-items-center">
     <h1 class="h2 m-0 me-3">Items</h1>
 
-    <div class="d-none d-md-block">
+    <button class="btn btn-light" (click)="showCreateItemModal = true">Crear item</button>
+
+    <!-- <div class="d-none d-md-block">
         <button class="btn btn-light" (click)="showUnitsModal = true">Medidas</button>
         <button class="btn btn-light ms-4" (click)="showCreateItemModal = true">Crear item</button>
-    </div>
+    </div> -->
 
-    <div class="btn-group d-md-none">
+    <!-- <div class="btn-group d-md-none">
         <button class="btn btn-light" (click)="showUnitsModal = true">Medidas</button>
         <div class="btn-group-separator"></div>
         <button class="btn btn-light" (click)="showCreateItemModal = true">Crear item</button>
-    </div>
+    </div> -->
 </header>
 
 
@@ -61,7 +63,7 @@
 
 
 <!-- units modal -->
-<app-modal-base *ngIf="showUnitsModal" (close)="showUnitsModal = false">
+<!-- <app-modal-base *ngIf="showUnitsModal" (close)="showUnitsModal = false">
     <div class="show-days-modal bg-light p-3 rounded">
         <div>
             <button class="btn btn-light d-block ms-auto mb-3" type="button">Añadir unidad</button>
@@ -90,4 +92,4 @@
             </table>
         </div>
     </div>
-</app-modal-base>
+</app-modal-base> -->

@@ -19,7 +19,7 @@ export class ItemsIndexComponent implements OnInit, OnDestroy {
 
   units!: MeasurementUnit[]
 
-  showUnitsModal: boolean = false
+  // showUnitsModal: boolean = false
   showCreateItemModal: boolean = false
 
   showSelectList: boolean = false
@@ -62,17 +62,6 @@ export class ItemsIndexComponent implements OnInit, OnDestroy {
     })
   }
 
-  ngOnInit(): void {
-    this.unitsSubs =  this._appS.measurementUnit_index().subscribe(units => this.units = units)
-    this.itemsSubs = this._appS.item_index().pipe(tap({ finalize: () => this._loadingS.hide() })).subscribe(items => this._items.next(items))
-  }
-
-  ngOnDestroy(): void {
-    this.unitsSubs.unsubscribe()
-    this.itemsSubs.unsubscribe()
-    this.addItemSubs?.unsubscribe()
-  }
-
   createItem(item: Item) {
     const currentItems = this._items.getValue()
     this._items.next( sortObjectsArray([...currentItems, item]) )
@@ -85,5 +74,16 @@ export class ItemsIndexComponent implements OnInit, OnDestroy {
   deleteItem(id: number) {
     const currentItems = this._items.getValue()
     this._items.next(currentItems?.filter(item => item.id !== id))
+  }
+  
+  ngOnInit(): void {
+    this.unitsSubs =  this._appS.measurementUnit_index().subscribe(units => this.units = units)
+    this.itemsSubs = this._appS.item_index().pipe(tap({ finalize: () => this._loadingS.hide() })).subscribe(items => this._items.next(items))
+  }
+
+  ngOnDestroy(): void {
+    this.unitsSubs.unsubscribe()
+    this.itemsSubs.unsubscribe()
+    this.addItemSubs?.unsubscribe()
   }
 }

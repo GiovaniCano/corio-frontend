@@ -31,7 +31,10 @@ export class AppComponent implements OnInit {
 
   ngOnInit(): void {
     /* auth status */
-    this._authS.authStatus().subscribe()
+    this._authS.authStatus().subscribe(isAuth => {
+      /* select list */
+      if(isAuth) this._appS.list_indexlite().subscribe(lists => this._selectListS.pushLists(lists))
+    })
 
     /* close mobile menu on navigation */
     this._router.events.subscribe(routerEvent => {
@@ -39,8 +42,5 @@ export class AppComponent implements OnInit {
         this._mobileMenuS.hide()
       }
     })
-
-    /* select list */
-    this._appS.list_indexlite().subscribe(lists => this._selectListS.pushLists(lists))
   }
 }

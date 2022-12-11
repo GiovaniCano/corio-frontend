@@ -1,11 +1,13 @@
 import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import { environment } from 'src/environments/environment';
-import { BehaviorSubject, concat, last, Observable, Subject, tap } from 'rxjs';
+import { BehaviorSubject, concat, last, Observable, Subject, take, tap } from 'rxjs';
 import { LoginCredentials, RegisterCredentials, ResetPasswordCredentials, UpdatePasswordCredentials, UpdateProfileCredentials } from '../models/_types';
 import { Router } from '@angular/router';
 import { User } from '../models/User';
 import { ToastService } from './toast.service';
+import { AppService } from './app.service';
+import { SelectListService } from './select-list.service';
 
 @Injectable({
   providedIn: 'root'
@@ -21,7 +23,13 @@ export class AuthService {
   private _isFirstLoad:boolean = true
   isFirstLoad() { return this._isFirstLoad }
 
-  constructor(private _toastS: ToastService, private _http: HttpClient, private _router: Router) { }
+  constructor(
+    private _toastS: ToastService, 
+    private _http: HttpClient, 
+    private _router: Router,
+    private _appS: AppService,
+    private _selectListS: SelectListService
+  ) { }
 
   updateProfile(body: UpdateProfileCredentials): Observable<User> {
     const url = this.url('user/profile-information')
@@ -134,11 +142,14 @@ export class AuthService {
   login(credentials: LoginCredentials): Observable<any> {
     const url = this.url('login')
     const login$ = this._http.post<User>(url, credentials).pipe(
-      tap((next: User) => {
-        const user = next
-        this._user.next(user)
-        this._auth.next(true)
-        this._router.navigate(['/'])
+      tap({
+        next: next => {
+          const user = next
+          this._user.next(user)
+          this._auth.next(true)
+          this._router.navigate(['/'])
+        },
+        complete: () => this._appS.list_indexlite().pipe(take(1)).subscribe(lists => this._selectListS.pushLists(lists))
       })
     )
     return concat(this.sanctumCSRF(), login$)
