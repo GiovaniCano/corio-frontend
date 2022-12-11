@@ -10,10 +10,10 @@
                 label="Nombre" 
                 placeholder="Nombre del ingrediente, condimento, especia, etc"></app-form-control-a>
 
-            <app-form-control-select-a
+            <app-form-control-select-a *ngIf="!itemToEdit"
                 formControlName="measurement_type_id"
                 [control]="measurement_type_id"
-                label="Tipo" 
+                label="Tipo (No se puede modificar una vez creado)" 
             >
                 <option value="0" selected disabled class="d-none">Elige un tipo de medida</option>
                 <option *ngFor="let type of types$|async" value="{{type.id}}">{{ type.name }}</option>

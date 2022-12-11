@@ -92,19 +92,19 @@ export class AppService {
   }
 
   /* ITEMS */
-  item_update(id:number, item: Item_Post): Observable<Item> { // items
+  item_update(id:number, item: Item_Post): Observable<Item> {
     const url = this.url('item/' + id)
     return this._http.put<Item>(url, item)
   }
-  item_delete(id: number): Observable<null> { // items
+  item_delete(id: number): Observable<null> {
     const url = this.url('item/' + id)
     return this._http.delete<null>(url)
   }
-  item_store(item: Item_Post): Observable<Item> { // items, dishes, daysections, lists
+  item_store(item: Item_Post): Observable<Item> {
     const url = this.url('item')
     return this._http.post<Item>(url, item)
   }
-  item_index(): Observable<Item[]> { // items, dishes, daysections, lists
+  item_index(): Observable<Item[]> {
     const url = this.url('item')
     return this._http.get<Item[]>(url)
   }
