@@ -18,6 +18,7 @@ export class FormControlAComponent implements ControlValueAccessor, AfterViewIni
   @Input() type!: string
   @Input() label!: string
   @Input() placeholder!: string
+  @Input() autocomplete: 'on'|'off' = 'off'
 
   @ViewChild('formInput') formInput!: ElementRef
 

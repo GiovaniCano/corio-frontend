@@ -11,6 +11,7 @@
         class="form-control" 
         [class.is-invalid]="isInvalid" 
         [attr.min]="type === 'number' ? 0 : null"
+        [autocomplete]="autocomplete"
     >
 
     <div *ngIf="isInvalid" class="invalid-feedback arial">{{ errorMessage }}</div>

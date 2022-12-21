@@ -10,7 +10,8 @@
                 [control]="email"
                 type="email" 
                 label="E-mail" 
-                placeholder="Tu correo electrónico"></app-form-control-a>
+                placeholder="Tu correo electrónico"
+                autocomplete="on"></app-form-control-a>
             <app-form-control-a
                 formControlName="password"
                 [control]="password"
@@ -19,7 +20,7 @@
                 placeholder="Tu contraseña"></app-form-control-a>
 
             <div class="form-check mb-4">
-                <input class="form-check-input" type="checkbox" value="" id="flexCheckDefault" formControlName="remember">
+                <input class="form-check-input" type="checkbox" id="flexCheckDefault" formControlName="remember">
                 <label class="form-check-label" for="flexCheckDefault">
                   Mantener sesión activa
                 </label>
